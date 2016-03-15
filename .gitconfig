@@ -6,9 +6,11 @@
 	cm = commit -m
 	pl = pull
 	ps = push
-	s = status
+	s = status -s
 	chk = checkout
+	cb = checkout -b
 	aa = add -A
+	b = branch
 	
 [color "diff-highlight"]
 	oldNormal = red bold
