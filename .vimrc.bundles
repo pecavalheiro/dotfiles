@@ -1,0 +1,15 @@
+Plugin 'altercation/vim-colors-solarized.git' "Precision colors
+Plugin 'vim-ruby/vim-ruby.git' " Ruby config for vim
+Plugin 'tpope/vim-rails.git' " Rails toolbox for vim
+Plugin 'tpope/vim-rake.git' " Vim-rails for pure ruby scripts
+Plugin 'tpope/vim-endwise.git' " End structures automatically on ruby
+Plugin 'vim-scripts/taglist.vim' " CTags
+Plugin 'airblade/vim-gitgutter' " Shows a git diff
+Plugin 'ctrlpvim/ctrlp.vim.git' " File navigation
+Plugin 'tpope/vim-fugitive.git' " Git wrapper
+Plugin 'sjl/gundo.vim.git' " Undo tree
+Plugin 'ervandew/supertab.git' " Completion
+Plugin 'tpope/vim-surround.git' " Quotes substitution
+Plugin 'scrooloose/syntastic.git' " Syntax checking
+Plugin 'thoughtbot/vim-rspec' " Vim Rspec runner
+Plugin 'scrooloose/nerdtree' " NERD tree
