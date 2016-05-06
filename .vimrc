@@ -9,13 +9,14 @@ set background=dark
 set history=100
 set visualbell
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype on                   " Enable filetype detection
+filetype indent on 	      " load indent file for the current filetype
+filetype plugin on 	      " Enable filetype-specific plugins
 
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
 set smartindent
 set autoindent
-
-" load indent file for the current filetype
-filetype indent on
 
 " Default mappings
 map <leader>s <ESC>:w<CR>
