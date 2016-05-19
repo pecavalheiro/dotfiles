@@ -13,3 +13,5 @@ Plugin 'tpope/vim-surround.git' " Quotes substitution
 Plugin 'scrooloose/syntastic.git' " Syntax checking
 Plugin 'thoughtbot/vim-rspec' " Vim Rspec runner
 Plugin 'scrooloose/nerdtree' " NERD tree
+Plugin 'tpope/vim-bundler' " Lightweight support for Ruby's Bundler
+Plugin 'ngmy/vim-rubocop' " RuboCop

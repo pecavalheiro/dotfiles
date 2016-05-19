@@ -18,6 +18,17 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set smartindent
 set autoindent
 
+set hlsearch                      " Highlight matches.
+
+" Enter clears search highlight
+nmap <CR> :nohlsearch<CR>
+
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
 " Default mappings
 map <leader>s <ESC>:w<CR>
 map <leader>q <ESC>:q<CR>
@@ -45,10 +56,10 @@ let g:ctrlp_cmd = 'CtrlP'
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>n :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+let g:rspec_command = "!clear && rspec --fail-fast {spec}"
 
-" Open NERDTree when no files specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 map <C-n> :NERDTreeToggle<CR>
 
