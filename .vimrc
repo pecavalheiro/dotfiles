@@ -4,17 +4,19 @@ set showmode
 syntax on
 set number
 set ruler
-colorscheme sift
-set background=dark
+colorscheme railscasts
+" set background=dark
 set history=100
 set visualbell
 set nocompatible              " be iMproved, required
 filetype on                   " Enable filetype detection
 filetype indent on 	      " load indent file for the current filetype
 filetype plugin on 	      " Enable filetype-specific plugins
+set guifont=Source\ Code\ Pro
 
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
+set cindent
 set smartindent
 set autoindent
 
@@ -28,6 +30,12 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
 " Default mappings
 map <leader>s <ESC>:w<CR>
@@ -59,7 +67,6 @@ map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!clear && rspec --fail-fast {spec}"
-
 
 map <C-n> :NERDTreeToggle<CR>
 

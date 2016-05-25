@@ -1,4 +1,4 @@
-Plugin 'altercation/vim-colors-solarized.git' "Precision colors
+" Plugin 'altercation/vim-colors-solarized.git' "Precision colors
 Plugin 'vim-ruby/vim-ruby.git' " Ruby config for vim
 Plugin 'tpope/vim-rails.git' " Rails toolbox for vim
 Plugin 'tpope/vim-rake.git' " Vim-rails for pure ruby scripts
@@ -15,3 +15,4 @@ Plugin 'thoughtbot/vim-rspec' " Vim Rspec runner
 Plugin 'scrooloose/nerdtree' " NERD tree
 Plugin 'tpope/vim-bundler' " Lightweight support for Ruby's Bundler
 Plugin 'ngmy/vim-rubocop' " RuboCop
+Plugin 'jpo/vim-railscasts-theme' " Railcasts Theme
