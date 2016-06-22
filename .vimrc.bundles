@@ -1,4 +1,3 @@
-" Plugin 'altercation/vim-colors-solarized.git' "Precision colors
 Plugin 'vim-ruby/vim-ruby.git' " Ruby config for vim
 Plugin 'tpope/vim-rails.git' " Rails toolbox for vim
 Plugin 'tpope/vim-rake.git' " Vim-rails for pure ruby scripts

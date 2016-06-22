@@ -5,8 +5,8 @@ syntax on
 set number
 set ruler
 colorscheme railscasts
-" set background=dark
 set history=100
+set timeoutlen=400
 set visualbell
 set nocompatible              " be iMproved, required
 filetype on                   " Enable filetype detection
@@ -19,8 +19,10 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set cindent
 set smartindent
 set autoindent
+set diffopt+=vertical             " Vertical Gdiff
 
 set hlsearch                      " Highlight matches.
+set autoread                      " Auto reload files when externally modified.
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
@@ -68,6 +70,14 @@ map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!clear && rspec --fail-fast {spec}"
 
+map <Leader>ss <ESC>:w<CR>:call RunCurrentSpecFile()<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTREE is the only window left open
+
+" Ruby Autocomplete Buffer
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+:nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR> " Highlight all occurrences of current word.
