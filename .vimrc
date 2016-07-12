@@ -27,6 +27,7 @@ set autoread                      " Auto reload files when externally modified.
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
 
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 if exists('+colorcolumn')
   set colorcolumn=80
 else
@@ -69,6 +70,9 @@ map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!clear && rspec --fail-fast {spec}"
+
+" ,. to browse generated CTags
+nnoremap <leader>. :CtrlPTag<cr> 
 
 map <Leader>ss <ESC>:w<CR>:call RunCurrentSpecFile()<CR>
 map <C-n> :NERDTreeToggle<CR>
