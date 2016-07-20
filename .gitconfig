@@ -12,7 +12,7 @@
   cb = checkout -b
   aa = add -A
   b = branch
-  l = log
+  l = log --pretty=format:'%C(yellow)%h %C(blue)<<%an>> %C(green)%ad%C(yellow)%d%Creset %s %Creset' --date=short --abbrev-commit -n 15
 
 [color "diff-highlight"]
   oldNormal = red bold
