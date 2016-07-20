@@ -15,3 +15,6 @@ Plugin 'scrooloose/nerdtree' " NERD tree
 Plugin 'tpope/vim-bundler' " Lightweight support for Ruby's Bundler
 Plugin 'ngmy/vim-rubocop' " RuboCop
 Plugin 'jpo/vim-railscasts-theme' " Railcasts Theme
+Plugin 'keith/rspec.vim' " Rspec better highlight
+Plugin 'vim-scripts/matchit.zip' " Vim Matchit
+Plugin 'vim-scripts/ruby-matchit.git' " Ruby Matchit

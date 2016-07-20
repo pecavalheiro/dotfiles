@@ -12,6 +12,7 @@
   cb = checkout -b
   aa = add -A
   b = branch
+  l = log
 
 [color "diff-highlight"]
   oldNormal = red bold
