@@ -1,3 +1,6 @@
 alias tempo='curl http://wttr.in/porto-alegre'
 alias ccat='pygmentize'
 alias ctrails='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
+alias ll='ls -l'
+alias la='ls -A'
+alias dbrebuild='rake db:drop; rake db:create; rake db:migrate; RAILS_ENV=test rake db:drop; RAILS_ENV=test rake db:create; RAILS_ENV=test rake db:migrate;'
