@@ -41,7 +41,6 @@ augroup CursorLine
 augroup END
 
 " Default mappings
-map 44 $
 map <leader>s <ESC>:w<CR>
 map <leader>q <ESC>:q<CR>
 noremap <Up> <NOP>
