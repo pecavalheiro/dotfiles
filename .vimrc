@@ -52,6 +52,7 @@ noremap <PageDown> <NOP>
 noremap <Home> <NOP>
 noremap <End> <NOP>
 noremap <Del> <NOP>
+map <leader>bp <ESC>Obinding.pry<ESC>,s,n
 
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim/
