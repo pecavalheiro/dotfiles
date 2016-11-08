@@ -72,6 +72,9 @@ map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "!clear && rspec --fail-fast {spec}"
 
+" Tabs mapping
+map <Leader>tt <ESC>:tabnew<CR>
+
 " ,. to browse generated CTags
 nnoremap <leader>. :CtrlPTag<cr> 
 
@@ -106,3 +109,8 @@ vnoremap <silent> <expr> p <sid>Repl()
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
 let g:airline#extensions#tabline#enabled = 1
+
+" Use ag instead of ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif

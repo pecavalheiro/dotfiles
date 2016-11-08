@@ -21,3 +21,4 @@ Plugin 'vim-scripts/ruby-matchit.git' " Ruby Matchit
 Plugin 'vim-airline/vim-airline' " Lean & mean status/tabline
 Plugin 'vim-airline/vim-airline-themes' " Themes for Vim-Airline
 Plugin 'kylef/apiblueprint.vim' " API Blueprint highlight
+Plugin 'mileszs/ack.vim' " Ack.vim
