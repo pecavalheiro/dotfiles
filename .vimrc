@@ -114,3 +114,5 @@ let g:airline#extensions#tabline#enabled = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
