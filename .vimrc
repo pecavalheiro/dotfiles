@@ -5,7 +5,8 @@ syntax on
 set number
 set ruler
 colorscheme railscasts
-set history=100
+set history=500
+set undolevels=500
 set timeoutlen=400
 set visualbell
 set nocompatible              " be iMproved, required
@@ -22,7 +23,10 @@ set autoindent
 set diffopt+=vertical             " Vertical Gdiff
 
 set hlsearch                      " Highlight matches.
+set incsearch                     " Show search matches as you type
 set autoread                      " Auto reload files when externally modified.
+set title
+set pastetoggle=<F2>              " Enables paste mode
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
