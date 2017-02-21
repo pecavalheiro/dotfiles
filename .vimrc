@@ -92,9 +92,6 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
-" Highlight all occurrences of current word.
-:nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR> 
-
 " Ctags
 :nnoremap <F5> :! ctags -R --languages=ruby --exclude=.git --exclude=log . %<CR> 
 
