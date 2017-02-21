@@ -4,6 +4,8 @@ set showmode
 syntax on
 set number
 set ruler
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 colorscheme railscasts
 set history=500
 set undolevels=500
@@ -47,6 +49,7 @@ augroup END
 " Default mappings
 map <leader>s <ESC>:w<CR>
 map <leader>q <ESC>:q<CR>
+map q: <NOP>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -56,7 +59,9 @@ noremap <PageDown> <NOP>
 noremap <Home> <NOP>
 noremap <End> <NOP>
 noremap <Del> <NOP>
+noremap Q <NOP>
 map <leader>bp <ESC>Obinding.pry<ESC>,s,n
+map <leader>us <ESC>:Eunittest<CR>
 
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -120,3 +125,4 @@ if executable('ag')
 endif
 
 autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " idents xml files with xmllink (needs libxml2-utils)
