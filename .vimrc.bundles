@@ -6,6 +6,7 @@ Plugin 'vim-scripts/taglist.vim' " CTags
 Plugin 'airblade/vim-gitgutter' " Shows a git diff
 Plugin 'ctrlpvim/ctrlp.vim.git' " File navigation
 Plugin 'tpope/vim-fugitive.git' " Git wrapper
+Plugin 'tpope/vim-unimpaired' " Pairs of handy bracket mappings
 Plugin 'sjl/gundo.vim.git' " Undo tree
 Plugin 'ervandew/supertab.git' " Completion
 Plugin 'tpope/vim-surround.git' " Quotes substitution

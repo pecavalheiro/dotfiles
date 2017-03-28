@@ -9,3 +9,4 @@ alias rmswp='rm $(find -name *.swp) 2>&1 /dev/null; rm $(find -name *.swo) > /de
 alias irrs='kill -9 $(cat tmp/pids/server.pid); RAILS_ENV=test bundle exec rake db:integration_reset && RAILS_ENV=test bundle exec rails s -b 127.0.0.1 -p 3001'
 alias c='clear'
 eval $(thefuck --alias)
+alias tmux="TERM=screen-256color-bce tmux"
