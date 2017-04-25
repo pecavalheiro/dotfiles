@@ -10,3 +10,4 @@ alias irrs='kill -9 $(cat tmp/pids/server.pid); RAILS_ENV=test bundle exec rake 
 alias c='clear'
 eval $(thefuck --alias)
 alias tmux="TERM=screen-256color-bce tmux"
+alias speedtest='curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
