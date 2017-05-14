@@ -84,6 +84,9 @@ let g:rspec_command = "!clear && rspec --fail-fast {spec}"
 " Tabs mapping
 map <Leader>tt <ESC>:tabnew<CR>
 
+" Rubocop autofix
+map <Leader>rua <ESC>:RuboCop -a<CR>
+
 " ,. to browse generated CTags
 nnoremap <leader>. :CtrlPTag<cr> 
 
