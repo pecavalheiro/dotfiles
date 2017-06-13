@@ -25,4 +25,4 @@ Plugin 'kylef/apiblueprint.vim' " API Blueprint highlight
 Plugin 'mileszs/ack.vim' " Ack.vim
 Plugin 'nginx.vim' " Nginx syntax
 Plugin 'ekalinin/Dockerfile.vim' " Dockerfile syntax
-Plugin 'valloric/youcompleteme' " Autocomplete
+Plugin 'elixir-lang/vim-elixir' "Elixir support for vim
