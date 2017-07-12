@@ -1,3 +1,12 @@
+filetype off
+
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
+
 let mapleader = ","
 set t_Co=256
 set showmode
@@ -62,13 +71,6 @@ noremap <Del> <NOP>
 noremap Q <NOP>
 map <leader>bp <ESC>Obinding.pry<ESC>,s,n
 map <leader>us <ESC>:Eunittest<CR>
-
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
