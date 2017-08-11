@@ -25,7 +25,6 @@ filetype on                   " Enable filetype detection
 filetype indent on 	      " load indent file for the current filetype
 filetype plugin on 	      " Enable filetype-specific plugins
 set guifont=Source\ Code\ Pro
-set clipboard=unnamedplus
 
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
