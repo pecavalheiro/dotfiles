@@ -89,6 +89,9 @@ map <Leader>tt <ESC>:tabnew<CR>
 " Rubocop autofix
 map <Leader>rua <ESC>:RuboCop -a<CR>
 
+" Macro shortcut
+map <Leader>m @
+
 " ,. to browse generated CTags
 nnoremap <leader>. :CtrlPTag<cr> 
 
@@ -133,5 +136,3 @@ autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " idents xml files with xmllink (needs libxml2-utils)
 
 set statusline+=%{fugitive#statusline()}
-
-map <leader>m @
