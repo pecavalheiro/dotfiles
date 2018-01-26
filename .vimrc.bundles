@@ -26,3 +26,4 @@ Plugin 'mileszs/ack.vim' " Ack.vim
 Plugin 'nginx.vim' " Nginx syntax
 Plugin 'ekalinin/Dockerfile.vim' " Dockerfile syntax
 Plugin 'elixir-lang/vim-elixir' "Elixir support for vim
+Plugin 'kurko/autocoder.vim' " Ruby classes and unit spec generators
