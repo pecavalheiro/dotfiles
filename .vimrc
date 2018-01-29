@@ -132,6 +132,8 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+set backspace=2 " make backspace work like most other programs
+
 autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " idents xml files with xmllink (needs libxml2-utils)
 
