@@ -12,4 +12,4 @@ eval $(thefuck --alias)
 alias tmux="TERM=screen-256color-bce tmux"
 alias speedtest='curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
 alias vimch='vim -O $(git s | awk "{print \$2}")'
-alias dockerdbs='docker run -d -p 5432:5432 -v local-pg:/var/lib/postgresql/data postgres; docker run -d -p 6379:6379 redis; docker run -d -p 9200:9200 elasticsearch:5.2.1'
+alias dbdocker='docker run -d -p 5432:5432 -v local-pg:/var/lib/postgresql/data postgres; docker run -d -p 6379:6379 redis; docker run -d -p 9200:9200 elasticsearch:5.2.1'

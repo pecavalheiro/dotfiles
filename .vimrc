@@ -81,7 +81,7 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-let g:rspec_command = "!clear && rspec --fail-fast {spec}"
+let g:rspec_command = "!clear && bundle exec rspec --fail-fast {spec}"
 
 " Tabs mapping
 map <Leader>tt <ESC>:tabnew<CR>
