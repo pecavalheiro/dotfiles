@@ -42,12 +42,11 @@ set pastetoggle=<F2>              " Enables paste mode
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
 
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+" String to put at the start of lines that have been wrapped "
+let &showbreak='↪ '
+
+highlight ColorColumn ctermbg=160 guibg=#d70000
+set colorcolumn=80
 
 augroup CursorLine
   au!
@@ -105,8 +104,13 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
+if executable('ripper-tags')
+" Ripper-tags (better ctags for ruby)
+  :nnoremap <F5> :! ripper-tags -R --exclude=log . %<CR> 
+else
 " Ctags
-:nnoremap <F5> :! ctags -R --languages=ruby --exclude=.git --exclude=log . %<CR> 
+  :nnoremap <F5> :! ctags -R --languages=ruby --exclude=.git --exclude=log . %<CR> 
+endif
 
 " Don't overwrite register when pasting
 " I haven't found how to hide this function (yet)
@@ -141,3 +145,6 @@ set statusline+=%{fugitive#statusline()}
 
 " Shortcut for Ack
 map <Leader>ag <ESC>:Ack 
+
+" Prevents Vim from scrolling when splitting the window horizontally.
+nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``

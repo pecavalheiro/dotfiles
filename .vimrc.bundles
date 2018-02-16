@@ -28,3 +28,4 @@ Plugin 'ekalinin/Dockerfile.vim' " Dockerfile syntax
 Plugin 'elixir-lang/vim-elixir' "Elixir support for vim
 Plugin 'mattn/gist-vim' "Post current buffer to gist
 Plugin 'kurko/autocoder.vim' " Ruby classes and unit spec generators
+Plugin 'inside/vim-search-pulse' " Vim Search Pulse
