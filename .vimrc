@@ -127,6 +127,9 @@ endfunction
 " NB: this supports "rp that replaces the selection by the contents of @r
 vnoremap <silent> <expr> p <sid>Repl()
 
+" Format pasted text automatically
+:nnoremap p p=`]
+
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
 let g:airline#extensions#tabline#enabled = 1
