@@ -18,15 +18,15 @@ function install {
   fi
 }
 
-echo "deb-src http://ppa.launchpad.net/nathan-renniewaldock/flux/ubuntu xenial main" | sudo tee -a /etc/apt/sources.list.d/flux.list
-echo "deb http://ppa.launchpad.net/nathan-renniewaldock/flux/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/flux.list
-# 1. Add the Spotify repository signing keys to be able to verify downloaded packages
+install sudo
+exit 0
+# adduser <username> sudo
+
+install dirmngr
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-# 2. Add the Spotify repository
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update
 sudo apt-get upgrade -y
-#sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 
 install software-properties-common
@@ -75,18 +75,11 @@ install libgl1-mesa-dev
 install libjpeg-dev
 install libpng12-dev
 install spotify-client
+install ncurses-dev
 curl -sSL https://get.docker.com/ | sh
 sudo usermod -aG docker $USER
-sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-sudo apt-get install fluxgui
-#git clone https://github.com/glmark2/glmark2.git
-#cd glmark2 && ./waf configure --with-flavors=x11-gl && ./waf build -j 4 && sudo ./waf install && sudo strip -s /usr/local/bin/glmark2
-#rm -rf glmark2
-\curl -L https://get.rvm.io | bash -s stable --ruby
-source /home/$USER/.rvm/scripts/rvm
-wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
-tar -xzf tmux-2.6.tar.gz
-cd tmux-2.6 && ./configure && make && sudo make install
-rm -rf tmux-2.6*
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+git clone "https://github.com/xflux-gui/fluxgui.git" && cd fluxgui && python download-xflux.py && sudo python setup.py install && cd .. && rm -rf fluxgui
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(rbenv init -)"' >> ~/.bashrc && mkdir -p "$(rbenv root)"/plugins && git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz && tar -xzf tmux-2.6.tar.gz && cd tmux-2.6 && ./configure && make && sudo make install && cd .. && rm -rf tmux-2.6*
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
