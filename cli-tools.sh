@@ -32,6 +32,7 @@ sudo apt-get autoremove -y
 install software-properties-common
 install git
 install htop
+install iotop
 install atop
 install vim
 install tmux
@@ -76,6 +77,7 @@ install libjpeg-dev
 install libpng12-dev
 install spotify-client
 install ncurses-dev
+install fonts-powerline
 curl -sSL https://get.docker.com/ | sh
 sudo usermod -aG docker $USER
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
