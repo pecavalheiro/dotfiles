@@ -26,7 +26,6 @@ filetype indent on 	      " load indent file for the current filetype
 filetype plugin on 	      " Enable filetype-specific plugins
 set guifont=Source\ Code\ Pro
 
-set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
 set cindent
 set smartindent
@@ -151,3 +150,8 @@ map <Leader>ag <ESC>:Ack
 
 " Prevents Vim from scrolling when splitting the window horizontally.
 nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+
+set expandtab
