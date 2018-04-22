@@ -88,6 +88,8 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-c
 install python-expect
 install python-gconf
 install python-appindicator
+install libjpeg-dev
+install libpng-dev
 git clone "https://github.com/xflux-gui/fluxgui.git" && cd fluxgui && python download-xflux.py && sudo python setup.py install && cd .. && rm -rf fluxgui
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(rbenv init -)"' >> ~/.bashrc && mkdir -p ~/plugins && git clone https://github.com/rbenv/ruby-build.git ~/plugins/ruby-build
 wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz && tar -xzf tmux-2.6.tar.gz && cd tmux-2.6 && ./configure && make && sudo make install && cd .. && rm -rf tmux-2.6*
