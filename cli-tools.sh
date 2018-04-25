@@ -47,7 +47,6 @@ install build-essential
 install tar
 install firmware-linux
 install intel-microcode
-install pepperflashplugin-nonfree
 install lm-sensors
 install guake
 install gconf-service
@@ -69,14 +68,14 @@ install exuberant-ctags
 install tree
 install meld
 install python3-dev
-install python-pip
+install python3-pip
 install python-pygments
 sudo pip3 install thefuck
 install pkg-config
 install libx11-dev
 install libgl1-mesa-dev
 install libjpeg-dev
-install libpng12-dev
+install libpng-dev
 install spotify-client
 install ncurses-dev
 install fonts-powerline
@@ -85,7 +84,7 @@ curl -sSL https://get.docker.com/ | sh
 sudo usermod -aG docker $USER
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
-install python-expect
+install python-pexpect
 install python-gconf
 install python-appindicator
 git clone "https://github.com/xflux-gui/fluxgui.git" && cd fluxgui && python download-xflux.py && sudo python setup.py install && cd .. && rm -rf fluxgui
@@ -93,3 +92,5 @@ git clone https://github.com/rbenv/rbenv.git ~/.rbenv && echo 'export PATH="$HOM
 wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz && tar -xzf tmux-2.6.tar.gz && cd tmux-2.6 && ./configure && make && sudo make install && cd .. && rm -rf tmux-2.6*
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 wget https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.17/franz_5.0.0-beta.17_amd64.deb && sudo dpkg -i franz_5.0.0-beta.17_amd64.deb && rm franz_5.0.0-beta.17_amd64.deb
+nvm install node
+npm install -g diff-so-fancy
