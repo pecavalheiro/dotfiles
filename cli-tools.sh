@@ -35,7 +35,6 @@ install htop
 install iotop
 install atop
 install vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 install tmux
 install curl
 install ack-grep
@@ -61,6 +60,7 @@ install libpq-dev
 install libevent-dev
 install libssl-dev
 install libreadline-dev
+install intltool
 install playonlinux
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -82,27 +82,33 @@ install spotify-client
 install ncurses-dev
 install fonts-powerline
 install bash-completion
-curl -sSL https://get.docker.com/ | sh
-sudo usermod -aG docker $USER
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
 install python-pexpect
 install python-gconf
 install python-appindicator
 
-# fluxgui
-git clone "https://github.com/xflux-gui/fluxgui.git" && cd fluxgui && python download-xflux.py && sudo python setup.py install && cd .. && rm -rf fluxgui
+# Other
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-# rbenv
+# Docker 
+curl -sSL https://get.docker.com/ | sh
+sudo usermod -aG docker $USER
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+
+# Rbenv
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(rbenv init -)"' >> ~/.bashrc && mkdir -p ~/.rbenv/plugins && git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && rbenv install 2.5.1 && rbenv global 2.5.1
 
-# tmux
+# Tmux
 wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz && tar -xzf tmux-2.6.tar.gz && cd tmux-2.6 && ./configure && make && sudo make install && cd .. && rm -rf tmux-2.6*
 
-# franz
+# Franz
 wget https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.17/franz_5.0.0-beta.17_amd64.deb && sudo dpkg -i franz_5.0.0-beta.17_amd64.deb && rm franz_5.0.0-beta.17_amd64.deb
 
-# nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-nvm install node
-npm install -g diff-so-fancy
+# Nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash && nvm install node && npm install -g diff-so-fancy
+
+# Redshift
+wget https://github.com/jonls/redshift/releases/download/v1.11/redshift-1.11.tar.xz && tar -xf redshift-1.11.tar.xz && cd redshift-1.11 && ./configure && make && make install && cd .. && rm -rf redshift-1.11
+
+# Fluxgui
+#git clone "https://github.com/xflux-gui/fluxgui.git" && cd fluxgui && python download-xflux.py && sudo python setup.py install && cd .. && rm -rf fluxgui
+
