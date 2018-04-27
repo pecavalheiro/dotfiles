@@ -1,3 +1,4 @@
+set nocompatible " Required
 filetype off
 
 " Vundle
@@ -20,7 +21,6 @@ set history=500
 set undolevels=500
 set timeoutlen=400
 set visualbell
-set nocompatible              " be iMproved, required
 filetype on                   " Enable filetype detection
 filetype indent on 	      " load indent file for the current filetype
 filetype plugin on 	      " Enable filetype-specific plugins
