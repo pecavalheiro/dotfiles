@@ -25,6 +25,7 @@ exit 0
 install dirmngr
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo add-apt-repository ppa:jonathonf/vim
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
@@ -36,6 +37,7 @@ install iotop
 install atop
 install vim
 install tmux
+install zsh
 install curl
 install ack-grep
 install silversearcher-ag
