@@ -114,3 +114,5 @@ wget https://github.com/jonls/redshift/releases/download/v1.11/redshift-1.11.tar
 # Fluxgui
 #git clone "https://github.com/xflux-gui/fluxgui.git" && cd fluxgui && python download-xflux.py && sudo python setup.py install && cd .. && rm -rf fluxgui
 
+# Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
