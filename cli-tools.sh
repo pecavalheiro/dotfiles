@@ -87,6 +87,11 @@ install bash-completion
 install python-pexpect
 install python-gconf
 install python-appindicator
+install openvpn
+install python3-setuptools
+
+# Openpyn
+sudo python3 -m pip install openpyn --upgrade
 
 # Other
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
