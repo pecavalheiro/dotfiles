@@ -1,3 +1,4 @@
+set nocompatible " Required
 filetype off
 
 " Vundle
@@ -20,12 +21,12 @@ set history=500
 set undolevels=500
 set timeoutlen=400
 set visualbell
-set nocompatible              " be iMproved, required
 filetype on                   " Enable filetype detection
 filetype indent on 	      " load indent file for the current filetype
 filetype plugin on 	      " Enable filetype-specific plugins
 set guifont=Source\ Code\ Pro
 
+set expandtab " Tabs to spaces
 set tabstop=2 shiftwidth=2 softtabstop=2
 set cindent
 set smartindent
@@ -154,4 +155,4 @@ nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
-set expandtab
+autocmd BufWritePost * GitGutter " GitGutter workaround for updating buffer
