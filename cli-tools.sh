@@ -18,8 +18,20 @@ function install {
   fi
 }
 
-install sudo
-exit 0
+function remove {
+  local package=$1
+
+  command -v apt > /dev/null 2>&1
+
+  if (($? == 0)); then
+    echo apt
+    sudo apt-get remove -y $package
+    return
+  fi
+}
+
+#install sudo
+#exit 0
 # adduser <username> sudo
 
 install dirmngr
@@ -37,6 +49,7 @@ install iotop
 install atop
 install vim
 install tmux
+install xclip
 install zsh
 install curl
 install ack-grep
@@ -84,6 +97,7 @@ install libpng-dev
 install spotify-client
 install ncurses-dev
 install fonts-powerline
+install fonts-roboto
 install bash-completion
 install python-pexpect
 install python-gconf
@@ -119,8 +133,11 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | b
 # Redshift
 wget https://github.com/jonls/redshift/releases/download/v1.11/redshift-1.11.tar.xz && tar -xf redshift-1.11.tar.xz && cd redshift-1.11 && ./configure && sudo make && sudo make install && cd .. && rm -rf redshift-1.11* && cp redshift.conf ~/.config/
 
-# Fluxgui
-#git clone "https://github.com/xflux-gui/fluxgui.git" && cd fluxgui && python download-xflux.py && sudo python setup.py install && cd .. && rm -rf fluxgui
-
 # Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Remove Nano
+remove nano
+
+# Topicons
+google-chrome https://extensions.gnome.org/extension/495/topicons/

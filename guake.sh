@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sleep 5
+sleep 3
 guake -r "main" -e "TERM=screen-256color-bce tmux"
