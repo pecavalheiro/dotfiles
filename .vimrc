@@ -154,6 +154,6 @@ map <Leader>ag <ESC>:Ack
 nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
 
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:syntastic_javascript_eslint_exe = 'yarn eslint --'
 
 autocmd BufWritePost * GitGutter " GitGutter workaround for updating buffer
