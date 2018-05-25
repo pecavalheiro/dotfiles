@@ -31,3 +31,5 @@ Plugin 'kurko/autocoder.vim' " Ruby classes and unit spec generators
 Plugin 'inside/vim-search-pulse' " Vim Search Pulse
 Plugin 'aliou/sql-heredoc.vim' " Syntax highlighting for SQL heredocs
 Plugin 'pangloss/vim-javascript' " syntax highlighting and improved indentation
+Plugin 'mxw/vim-jsx' "Syntax highlighting and indenting for JSX
+Plugin 'scrooloose/nerdcommenter' " NERD commenter
