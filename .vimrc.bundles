@@ -33,3 +33,5 @@ Plugin 'pangloss/vim-javascript' " syntax highlighting and improved indentation
 Plugin 'mxw/vim-jsx' "Syntax highlighting and indenting for JSX
 Plugin 'scrooloose/nerdcommenter' " NERD commenter
 Plugin 'slim-template/vim-slim' "slim syntax highlighting for vim.
+Plugin 'w0rp/ale' " Asynchronous Lint Engine
+Plugin 'MattesGroeger/vim-bookmarks' " Vim Bookmarks upgrade
