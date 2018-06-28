@@ -4,7 +4,7 @@ alias ctrails='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -Al'
-alias dbrebuild='rake db:drop db:create db:migrate; RAILS_ENV=test rake db:drop db:create db:migrate;'
+alias dbrebuild='bundle exec rake db:drop db:create db:migrate; RAILS_ENV=test bundle exec rake db:drop db:create db:migrate;'
 alias rmswp='rm $(find -name *.swp) > /dev/null; rm $(find -name *.swo) > /dev/null; rm $(find -name *.sw) > /dev/null'
 alias irrs='kill -9 $(cat tmp/pids/server.pid); RAILS_ENV=test bundle exec rake db:drop && RAILS_ENV=test bundle exec rake db:create && RAILS_ENV=test bundle exec rake db:migrate && RAILS_ENV=test bundle exec rake db:seed:integration && RAILS_ENV=test bundle exec rails s -b 127.0.0.1 -p 3000'
 alias c='clear'
