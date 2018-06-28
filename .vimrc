@@ -17,8 +17,8 @@ set ruler
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 colorscheme railscasts
-set history=500
-set undolevels=500
+set history=200
+set undolevels=200
 set timeoutlen=400
 set visualbell
 filetype on                   " Enable filetype detection
@@ -157,3 +157,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'yarn eslint --'
 
 autocmd BufWritePost * GitGutter " GitGutter workaround for updating buffer
+
+" Disable ALE auto lint
+"let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+map <Leader>ale <ESC>:ALELint<CR>
