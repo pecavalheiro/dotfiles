@@ -37,7 +37,11 @@ function remove {
 install dirmngr
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+echo deb https://dl.winehq.org/wine-builds/debian/ stretch main | sudo tee /etc/apt/sources.list.d/wine.list
 sudo add-apt-repository ppa:jonathonf/vim
+sudo dpkg --add-architecture i386
+sudo wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
+sudo wget -q "https://dl.winehq.org/wine-builds/Release.key" -O- | sudo apt-key add -
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
@@ -77,6 +81,7 @@ install libevent-dev
 install libssl-dev
 install libreadline-dev
 install intltool
+sudo apt-get install -y --install-recommends winehq-stable
 install playonlinux
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
