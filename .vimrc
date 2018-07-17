@@ -65,7 +65,7 @@ map <Leader>m @
 " ,. to browse generated CTags
 nnoremap <leader>. :CtrlPTag<cr>
 " Shortcut for Ack
-map <Leader>ag <ESC>:Ack
+map <Leader>ag <ESC>:Ack 
 " Unwanted features
 map q: <NOP>
 noremap Q <NOP>
