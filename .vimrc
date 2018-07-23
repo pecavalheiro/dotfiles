@@ -106,7 +106,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 " Ctags for ruby and javascript
-:nnoremap <F5> :! ctags -R --languages=ruby,javascript --exclude=.git --exclude=log . %<CR>
+:nnoremap <F5> :! ctags -R --languages=ruby,javascript --exclude=.git --exclude=node_modules --exclude=log . %<CR>
 
 " Remove trailing spaces with F6
 :nnoremap <silent> <F6> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
