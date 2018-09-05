@@ -28,6 +28,7 @@ set expandtab                                 " Tabs to spaces
 set tabstop=2 softtabstop=2                   " Tab width
 set shiftwidth=2                              " >>, << and == width
 set autoindent                                " Copy the indentation from the previous line
+set smartindent
 set diffopt+=vertical                         " Vertical Gdiff
 set hlsearch                                  " Highlight matches.
 set incsearch                                 " Show search matches as you type
