@@ -35,3 +35,5 @@ Plugin 'scrooloose/nerdcommenter' " NERD commenter
 Plugin 'slim-template/vim-slim' "slim syntax highlighting for vim.
 Plugin 'w0rp/ale' " Asynchronous Lint Engine
 Plugin 'MattesGroeger/vim-bookmarks' " Vim Bookmarks upgrade
+Plugin 'martinda/Jenkinsfile-vim-syntax' " Vim Jenkins Syntax Highlight
+Plugin 'craigemery/vim-autotag' " Ctags autotag

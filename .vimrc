@@ -35,6 +35,7 @@ set incsearch                                 " Show search matches as you type
 set autoread                                  " Auto reload files when externally modified.
 set title                                     " Sets the title of the window
 set pastetoggle=<F2>                          " Enables paste mode
+set tags=tags                                 " ctags
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
@@ -43,8 +44,12 @@ nmap <CR> :nohlsearch<CR>
 let &showbreak='↪ '
 
 " Red column at position 80
-highlight ColorColumn ctermbg=160 guibg=#d70000
-set colorcolumn=80
+highlight ColorColumn ctermbg=88 guibg=#d70000
+set colorcolumn=80,100
+
+" Highlights text over 100 columns
+"au BufWinEnter * let w:m1=matchadd('Search', '\%<101v.\%>77v', -1)
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 " Grey cursor line
 augroup CursorLine
