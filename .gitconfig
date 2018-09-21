@@ -43,6 +43,6 @@
   changed = green
   untracked = cyan
 [push]
-  default = simple
+  default = tracking
 [include]
   path = ~/.gitconfig.local
