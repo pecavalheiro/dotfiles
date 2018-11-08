@@ -11,7 +11,6 @@ Plugin 'sjl/gundo.vim.git' " Undo tree
 Plugin 'ervandew/supertab.git' " Completion
 Plugin 'tpope/vim-surround.git' " Quotes substitution
 Plugin 'vim-syntastic/syntastic.git' " Syntax checking
-Plugin 'thoughtbot/vim-rspec' " Vim Rspec runner
 Plugin 'scrooloose/nerdtree' " NERD tree
 Plugin 'tpope/vim-bundler' " Lightweight support for Ruby's Bundler
 Plugin 'ngmy/vim-rubocop' " RuboCop
@@ -37,3 +36,5 @@ Plugin 'w0rp/ale' " Asynchronous Lint Engine
 Plugin 'MattesGroeger/vim-bookmarks' " Vim Bookmarks upgrade
 Plugin 'martinda/Jenkinsfile-vim-syntax' " Vim Jenkins Syntax Highlight
 Plugin 'craigemery/vim-autotag' " Ctags autotag
+Plugin 'janko-m/vim-test' " A Vim wrapper for running tests on different granularities.
+Plugin 'jparise/vim-graphql' " GraphQL file detection, syntax highlighting, and indentation.
