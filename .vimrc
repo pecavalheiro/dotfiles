@@ -61,7 +61,7 @@ augroup END
 " Default mappings
 map <leader>s <ESC>:w<CR>
 map <leader>q <ESC>:q<CR>
-map <leader>bp <ESC>Obinding.pry<ESC>,s,n
+map <leader>bp <ESC>Obinding.pry<ESC>,s,l
 " Tabs mapping
 map <Leader>tt <ESC>:tabnew<CR>
 " Rubocop autofix
@@ -93,12 +93,14 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_max_files = 0
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-map <Leader>n :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>ss <ESC>:w<CR>:call RunCurrentSpecFile()<CR>
-let g:rspec_command = "!clear && bundle exec rspec --fail-fast {spec}"
+map <Leader>t :TestFile<CR>
+map <Leader>a :TestSuite<CR>
+map <Leader>n :TestNearest<CR>
+map <Leader>l :TestLast<CR>
+map <Leader>g :TestVisit<CR>
+map <Leader>ss <ESC>:w<CR>:TestFile<CR>
+"let g:rspec_command = "!clear && bundle exec rspec --fail-fast {spec}"
+"let test#elixir#exunit#executable = 'clear && iex -S mix test --trace'
 
 " NERDTree in ctrl + n
 map <C-n> :NERDTreeToggle<CR>
@@ -195,3 +197,7 @@ function! BookmarkUnmapKeys()
 endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+
+if &term =~ '256color'
+    set t_ut=
+endif
