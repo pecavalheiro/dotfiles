@@ -201,3 +201,17 @@ autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 if &term =~ '256color'
     set t_ut=
 endif
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+" Use bin/rubocop instead of rubocop if available
+if executable('bin/rubocop')
+  let g:vimrubocop_rubocop_cmd = 'bin/rubocop '
+endif

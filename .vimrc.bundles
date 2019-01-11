@@ -3,6 +3,7 @@ Plugin 'tpope/vim-rails.git' " Rails toolbox for vim
 Plugin 'tpope/vim-rake.git' " Vim-rails for pure ruby scripts
 Plugin 'tpope/vim-endwise.git' " End structures automatically on ruby
 Plugin 'vim-scripts/taglist.vim' " CTags
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plugin 'airblade/vim-gitgutter' " Shows a git diff
 Plugin 'ctrlpvim/ctrlp.vim.git' " File navigation
 Plugin 'tpope/vim-fugitive.git' " Git wrapper
