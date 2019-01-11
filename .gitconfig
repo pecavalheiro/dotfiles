@@ -10,11 +10,15 @@
   s = status -s
   st = status
   chk = checkout
+  chkt = checkout --theirs
+  chko = checkout --ours
   cb = checkout -b
   aa = add -A
+  a = add
   b = branch
   bd = branch -d
   l = log --pretty=format:'%C(yellow)%h %C(blue)<<%an>> %C(green)%ad%C(yellow)%d%Creset %s %Creset' --date=short --abbrev-commit -n 15
+  mm = ! git stash -u && git checkout master && (git pull --rebase | grep 'up to date' && git checkout '@{-1}' || git checkout '@{-2}' ) && git merge master && git stash pop
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
