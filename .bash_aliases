@@ -2,7 +2,7 @@ alias rudif='rubocop -a $(git diff --name-only master...)'
 alias tempo='curl http://wttr.in/hamburg'
 alias ccat='pygmentize -f terminal256 -O style=native -g'
 alias dbrebuild='bundle exec rake db:drop db:create db:migrate; RAILS_ENV=test bundle exec rake db:drop db:create db:migrate;'
-alias rmswp='rm $(find -name *.swp) > /dev/null; rm $(find -name *.swo) > /dev/null; rm $(find -name *.sw) > /dev/null'
+alias rmswp='rm -f $(find . -name *.swp) > /dev/null; rm -f $(find . -name *.swo) > /dev/null; rm -f $(find . -name *.sw) > /dev/null; rm -f /var/tmp/*.swp > /dev/null'
 alias c='clear'
 eval $(thefuck --alias)
 alias speedtest='curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
