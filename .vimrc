@@ -139,6 +139,10 @@ vnoremap <silent> <expr> p <sid>Repl()
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='deus'
+
+" Lists all buffers and waits for input
+nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Use ag instead of ack
 if executable('ag')
@@ -166,6 +170,9 @@ let g:syntastic_javascript_eslint_exe = 'yarn eslint --'
 
 " GitGutter workaround for updating buffer
 autocmd BufWritePost * GitGutter
+
+nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>GitGutterPrevHunk
 
 " Disable ALE auto lint
 let g:ale_lint_on_text_changed = 'never'
