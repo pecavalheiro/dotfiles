@@ -16,7 +16,12 @@ set number                                    " Shows line numbers
 set ruler                                     " Shows line and column numbers
 set list                                      " Diffs between tabs, spaces and trailing blanks
 set listchars=tab:>.,trail:.,extends:#,nbsp:. " Shows hidden characters
-colorscheme railscasts                        " So cosy
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set background=dark
+colorscheme palenight
+let g:palenight_terminal_italics=1
 set history=200                               " History limit
 set undolevels=200                            " Undo levels limit
 set timeoutlen=400                            " Timeout for leader key
@@ -36,6 +41,8 @@ set autoread                                  " Auto reload files when externall
 set title                                     " Sets the title of the window
 set pastetoggle=<F2>                          " Enables paste mode
 set tags=tags                                 " ctags
+set ignorecase                                " Ignore case for search
+highlight LineNr ctermfg=darkgrey
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
@@ -71,7 +78,7 @@ map <Leader>m @
 " ,. to browse generated CTags
 nnoremap <leader>. :CtrlPTag<cr>
 " Shortcut for Ack
-map <Leader>ag <ESC>:Ack 
+map <Leader>ag <ESC>:Ack<Space>
 " Unwanted features
 map q: <NOP>
 noremap Q <NOP>
@@ -102,6 +109,11 @@ map <Leader>ss <ESC>:w<CR>:TestFile<CR>
 "let g:rspec_command = "!clear && bundle exec rspec --fail-fast {spec}"
 "let test#elixir#exunit#executable = 'clear && iex -S mix test --trace'
 
+" Git mappings
+map <Leader>gb <ESC>:Gblame<CR>
+map <Leader>cgb <ESC>:q<CR>:Gblame<CR>
+map <Leader>cgbi <ESC>:q<CR>:Gblame<CR>i
+
 " NERDTree in ctrl + n
 map <C-n> :NERDTreeToggle<CR>
 
@@ -113,8 +125,13 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
-" Ctags for ruby and javascript
-:nnoremap <F5> :! ctags -R --languages=ruby,javascript --exclude=.git --exclude=node_modules --exclude=log . %<CR>
+if executable('ripper-tags')
+  " Ripper-tags (better ctags for ruby)
+  :nnoremap <F5> :! ripper-tags -R --exclude=vendor<CR>
+else
+  " Ctags for ruby and javascript
+  :nnoremap <F5> :! ctags -R --languages=ruby,javascript --exclude=.git --exclude=node_modules --exclude=log . %<CR>
+endif
 
 " Remove trailing spaces with F6
 :nnoremap <silent> <F6> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
