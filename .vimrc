@@ -1,9 +1,7 @@
 set nocompatible                              " be iMproved, required
 filetype off                                  " required
 
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+" better organization for Plug
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -22,8 +20,8 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 colorscheme palenight
 let g:palenight_terminal_italics=1
-set history=200                               " History limit
-set undolevels=200                            " Undo levels limit
+set history=100                               " History limit
+set undolevels=100                            " Undo levels limit
 set timeoutlen=400                            " Timeout for leader key
 set visualbell                                " Disable annoying sound
 filetype on                                   " Enable filetype detection
@@ -41,8 +39,11 @@ set autoread                                  " Auto reload files when externall
 set title                                     " Sets the title of the window
 set pastetoggle=<F2>                          " Enables paste mode
 set tags=tags                                 " ctags
-set ignorecase                                " Ignore case for search
+set ignorecase                                " Workaround for smartcase
+set smartcase                                 " Case sensitive search only when uppercase
+" set nowrap                                  " Line wrapping
 highlight LineNr ctermfg=darkgrey
+set clipboard=unnamed                         " Share clipboard between tmux and vim
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
@@ -75,10 +76,6 @@ map <Leader>tt <ESC>:tabnew<CR>
 map <Leader>rua <ESC>:RuboCop -a<CR>
 " Macro shortcut
 map <Leader>m @
-" ,. to browse generated CTags
-nnoremap <leader>. :CtrlPTag<cr>
-" Shortcut for Ack
-map <Leader>ag <ESC>:Ack<Space>
 " Unwanted features
 map q: <NOP>
 noremap Q <NOP>
@@ -93,11 +90,11 @@ noremap <Home> <NOP>
 noremap <End> <NOP>
 noremap <Del> <NOP>
 
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_max_files = 0
+" FZF mappings
+" fzf by filename
+map <C-p> :FZF<CR>
+" fzf file content
+nnoremap <C-g> :Ag<Cr>
 
 " RSpec.vim mappings
 map <Leader>t :TestFile<CR>
@@ -161,10 +158,24 @@ let g:airline_theme='deus'
 " Lists all buffers and waits for input
 nnoremap <Leader>b :ls<CR>:b<Space>
 
-" Use ag instead of ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+" Augmenting Ag command using fzf#vim#with_preview function
+"   * fzf#vim#with_preview([[options], [preview window], [toggle keys...]])
+"     * For syntax-highlighting, Ruby and any of the following tools are required:
+"       - Bat: https://github.com/sharkdp/bat
+"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
+"       - CodeRay: http://coderay.rubychan.de/
+"       - Rouge: https://github.com/jneen/rouge
+"
+"   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+" (FZF) Open a new buffer at the bottom
+let g:fzf_layout = { 'window': 'botright new' }
 
 " make backspace work like most other programs
 set backspace=2
@@ -188,39 +199,15 @@ let g:syntastic_javascript_eslint_exe = 'yarn eslint --'
 " GitGutter workaround for updating buffer
 autocmd BufWritePost * GitGutter
 
-nmap ]c <Plug>GitGutterNextHunk
-nmap [c <Plug>GitGutterPrevHunk
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 
-" Disable ALE auto lint
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_save = 0
+let g:ale_lint_on_insert_leave = 0
 map <Leader>ale <ESC>:ALELint<CR>
-
-"  Disable vim-bookmarks when NERDTree is open
-let g:bookmark_no_default_key_mappings = 1
-function! BookmarkMapKeys()
-    nmap mm :BookmarkToggle<CR>
-    nmap mi :BookmarkAnnotate<CR>
-    nmap mn :BookmarkNext<CR>
-    nmap mp :BookmarkPrev<CR>
-    nmap ma :BookmarkShowAll<CR>
-    nmap mc :BookmarkClear<CR>
-    nmap mx :BookmarkClearAll<CR>
-    nmap mkk :BookmarkMoveUp
-    nmap mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap mm
-    unmap mi
-    unmap mn
-    unmap mp
-    unmap ma
-    unmap mc
-    unmap mx
-    unmap mkk
-    unmap mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+let g:ale_cache_executable_check_failures = 1
 
 if &term =~ '256color'
     set t_ut=
