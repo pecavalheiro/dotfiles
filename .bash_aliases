@@ -13,6 +13,6 @@ alias bu='bundle'
 alias chrome="open -a \"Google Chrome\""
 alias ctags="`brew --prefix`/bin/ctags"
 alias dbdocker='docker run -d -e POSTGRES_USER="$USER" -p 5432:5432 -v local-pg:/var/lib/postgresql/data postgres:10.3'
-#alias irrs='kill -9 $(cat tmp/pids/server.pid); RAILS_ENV=test bundle exec rake db:drop && RAILS_ENV=test bundle exec rake db:create && RAILS_ENV=test bundle exec rake db:migrate && RAILS_ENV=test bundle exec rake db:seed:integration && RAILS_ENV=test bundle exec rails s -b 127.0.0.1 -p 3000'
-#alias tmux="TERM=screen-256color-bce tmux"
-alias rake='bundle exec rake'
+alias rake='noglob bundle exec rake'
+alias rib='rubocop -a $(git diff master..  --name-only  | xargs ls -d 2>/dev/null)'
+alias cib='git diff master..  --name-only  | xargs ls -d 2>/dev/null'
