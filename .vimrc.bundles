@@ -6,15 +6,13 @@ Plug 'craigemery/vim-autotag' " Ctags autotag
 Plug 'ekalinin/Dockerfile.vim' " Dockerfile syntax
 Plug 'elixir-lang/vim-elixir' "Elixir support for vim
 Plug 'ervandew/supertab' " Completion
-" Plug 'FelikZ/ctrlp-py-matcher' " Fast CtrlP matcher based on python (needs +python compiled vim)
 Plug 'janko-m/vim-test' " A Vim wrapper for running tests on different granularities.
 Plug 'jparise/vim-graphql' " GraphQL file detection, syntax highlighting, and indentation.
 Plug 'keith/rspec.vim' " Rspec better highlight
 Plug 'kurko/autocoder.vim' " Ruby classes and unit spec generators
 Plug 'kylef/apiblueprint.vim' " API Blueprint highlight
 Plug 'martinda/Jenkinsfile-vim-syntax' " Vim Jenkins Syntax Highlight
-" Plug 'mattesgroeger/vim-bookmarks' " Vim Bookmarks upgrade
-" Plug 'ctrlpvim/ctrlp.vim' " File navigation
+Plug 'mattesgroeger/vim-bookmarks' " Vim Bookmarks upgrade
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim' " Ack.vim
@@ -43,7 +41,6 @@ Plug 'vim-scripts/ruby-matchit' " Ruby Matchit
 Plug 'vim-scripts/taglist.vim' " CTags
 Plug 'vim-syntastic/syntastic' " Syntax checking
 Plug 'w0rp/ale' " Asynchronous Lint Engine
-Plug 'wakatime/vim-wakatime' " Time tracking
 " Themes
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'jpo/vim-railscasts-theme' " Railcasts Theme

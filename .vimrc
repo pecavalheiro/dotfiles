@@ -44,6 +44,7 @@ set smartcase                                 " Case sensitive search only when 
 " set nowrap                                  " Line wrapping
 highlight LineNr ctermfg=darkgrey
 set clipboard=unnamed                         " Share clipboard between tmux and vim
+set rtp+=~/.fzf
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
@@ -103,8 +104,6 @@ map <Leader>n :TestNearest<CR>
 map <Leader>l :TestLast<CR>
 map <Leader>g :TestVisit<CR>
 map <Leader>ss <ESC>:w<CR>:TestFile<CR>
-"let g:rspec_command = "!clear && bundle exec rspec --fail-fast {spec}"
-"let test#elixir#exunit#executable = 'clear && iex -S mix test --trace'
 
 " Git mappings
 map <Leader>gb <ESC>:Gblame<CR>
@@ -113,6 +112,9 @@ map <Leader>cgbi <ESC>:q<CR>:Gblame<CR>i
 
 " NERDTree in ctrl + n
 map <C-n> :NERDTreeToggle<CR>
+
+" Show hidden files in CTRLP
+let g:ctrlp_show_hidden = 1
 
 " Close Vim if NERDTree is the only window left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -146,9 +148,6 @@ endfunction
 
 " NB: this supports "rp that replaces the selection by the contents of @r
 vnoremap <silent> <expr> p <sid>Repl()
-
-" Format pasted text automatically
-:nnoremap p p=`]
 
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
