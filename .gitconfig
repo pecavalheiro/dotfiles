@@ -20,6 +20,7 @@
   l = log --pretty=format:'%C(yellow)%h %C(blue)<<%an>> %C(green)%ad%C(yellow)%d%Creset %s %Creset' --date=short --abbrev-commit -n 15
   mm = ! git stash -u && git checkout master && (git pull --rebase | grep 'up to date' && git checkout '@{-1}' || git checkout '@{-2}' ) && git merge master && git stash pop
   up = !git fetch origin && git rebase origin/master
+  undo = reset --soft HEAD~1
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
@@ -52,9 +53,6 @@
 [include]
   path = ~/.gitconfig.local
 [merge]
-	tool = diffconflicts
-[mergetool "diffconflicts"]
-	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-	trustExitCode = true
+  tool = meld
 [mergetool]
 	keepBackup = false
