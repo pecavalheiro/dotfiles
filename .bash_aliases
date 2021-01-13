@@ -17,3 +17,4 @@ alias rib='rubocop -a $(git diff master..  --name-only  | xargs ls -d 2>/dev/nul
 alias cib='git diff master..  --name-only  | xargs ls -d 2>/dev/null'
 alias kkey='xmodmap -e "keycode 94 = plusminus"'
 alias audiofix='pulseaudio -k && sudo alsa force-reload'
+alias apti='sudo apt-get install'
