@@ -125,6 +125,9 @@ install yarn
 install postgresql-9.6
 install openrazer-meta
 
+# Lenovo webcam management
+install v4l2loopback-utils
+
 # Direnv
 echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
 
