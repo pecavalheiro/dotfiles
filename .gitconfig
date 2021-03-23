@@ -2,25 +2,41 @@
   diff = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
 [alias]
-  dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
-  cm = commit -m
+  a = add
+  aa = add -A
+  b = branch
+  bd = branch -d
   c = commit
+  cb = checkout -b
+  chk = checkout
+  chko = checkout --ours
+  chkt = checkout --theirs
+  cm = commit -m
+  dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+  ec = "!f() { git rebase --interactive ''$1^''; }; f"
+  flush = !git reset --hard && git clean -df
+  hf = "!f() { \
+    git stash -u && \
+    git checkout master && \
+    git fetch origin && \
+    git rebase origin/master && \
+    branch_name=$1 && \
+    shift && \
+    git checkout -b $branch_name && \
+    git stash pop && \
+    git add -A -i && \
+    git commit && \
+    git push --set-upstream origin $branch_name && \
+    git checkout '@{-2}'; \
+    }; f"
+  l = log --pretty=format:'%C(yellow)%h %C(blue)<<%an>> %C(green)%ad%C(yellow)%d%Creset %s %Creset' --date=short --abbrev-commit -n 15
+  mm = ! git stash -u && git checkout master && (git fetch origin && git rebase origin/master && git checkout - ) && git rebase master && git stash pop
   pl = pull
   ps = push
   s = status -s
   st = status
-  chk = checkout
-  chkt = checkout --theirs
-  chko = checkout --ours
-  cb = checkout -b
-  aa = add -A
-  a = add
-  b = branch
-  bd = branch -d
-  l = log --pretty=format:'%C(yellow)%h %C(blue)<<%an>> %C(green)%ad%C(yellow)%d%Creset %s %Creset' --date=short --abbrev-commit -n 15
-  mm = ! git stash -u && git checkout master && (git pull --rebase | grep 'up to date' && git checkout '@{-1}' || git checkout '@{-2}' ) && git merge master && git stash pop
-  up = !git fetch origin && git rebase origin/master
   undo = reset --soft HEAD~1
+  up = !git fetch origin && git rebase origin/master
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
