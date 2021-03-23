@@ -6,6 +6,8 @@
 
 #/etc/default/keyboard -> XKBOPTIONS="ctrl:nocaps"
 
+set -e
+
 function install {
   local package=$1
 
@@ -68,6 +70,11 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password.gpg] https://downl
 echo 'deb http://download.opensuse.org/repositories/hardware:/razer/Debian_Testing/ /' | sudo tee /etc/apt/sources.list.d/hardware:razer.list
 curl -fsSL https://download.opensuse.org/repositories/hardware:razer/Debian_Testing/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/hardware_razer.gpg > /dev/null
 # /OpenRazer
+
+# TeamViewer
+wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+sudo apt install ./teamviewer_amd64.deb
+rm teamviewer_amd64.deb
 
 # make sources changes effective
 sudo apt-get update
@@ -148,7 +155,8 @@ install libncurses5-dev
 wget https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b.tar.gz && tar -xzf tmux-3.1b.tar.gz && cd tmux-3.1b && ./configure && make && sudo make install && cd .. && rm -rf tmux-3.1*
 
 # Nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash && nvm install node && npm install -g diff-so-fancy
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash && nvm install node && npm install -g diff-so-fancy && npm install dredd --global && npm install aglio --global
+
 
 # Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -169,3 +177,7 @@ echo "Install flameshot sudo snap install flameshot"
 echo "Add keyboard shortcut for Guake, Flameshot, 1Password"
 echo "Set keyboard as English (inlt. with AltGr dead keys)"
 echo "Install zeus pre: gem install --pre zeus"
+echo "Install HPlib https://developers.hp.com/hp-linux-imaging-and-printing/gethplip"
+echo "Install Sound Switcher - sudo snap install indicator-sound-switcher"
+echo "Add Flameshot and Sound Switcher to startup apps"
+echo "Install Polychromatic (open razer). Might need to be manual .deb install. Might require oldlib http://ftp.br.debian.org/debian/pool/main/liba/libappindicator/gir1.2-appindicator3-0.1_0.4.92-8_amd64.deb"
