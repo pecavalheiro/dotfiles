@@ -32,6 +32,45 @@ function remove {
   fi
 }
 
+# Dependencies
+install libevent-dev # Tmux
+install libncurses5-dev # Tmux
+install libssl-dev # RBenv
+install openssl # RBenv
+install apt-transport-https # Docker
+install ca-certificates # Docker
+install curl # Docker
+install gnupg-agent # Docker
+install software-properties-common # Docker
+install libpq-dev # Postgres
+
+install direnv
+install exuberant-ctags
+install fonts-powerline
+install fonts-roboto
+install git
+install guake
+install htop
+install iotop
+install libpam-fprintd
+install libreoffice
+install meld
+install powertop
+install python3-dev
+install python3-pip
+install python3-pygments
+install silversearcher-ag
+install snapd
+install tar
+install tmux
+install tree
+install vim
+install vlc
+install yarn
+install zsh
+
+# Lenovo webcam management
+install v4l2loopback-utils
 
 # Postgres
 sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
@@ -65,25 +104,13 @@ echo 'deb http://download.opensuse.org/repositories/hardware:/razer/Debian_Testi
 curl -fsSL https://download.opensuse.org/repositories/hardware:razer/Debian_Testing/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/hardware_razer.gpg > /dev/null
 # /OpenRazer
 
-# TeamViewer
-wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo apt install ./teamviewer_amd64.deb
-rm teamviewer_amd64.deb
-
 # make sources changes effective
 sudo apt-get update
 
-# docker
-install apt-transport-https
-install ca-certificates
-install curl
-install gnupg-agent
-install software-properties-common
-install docker-ce
-install docker-ce-cli
-install containerd.io
-# /docker
-
+install postgresql-9.6
+install spotify-client
+install openrazer-meta
+install 1password
 # Wine/PlayOnLinux
 install wine
 install wine32
@@ -92,43 +119,15 @@ install libwine
 install libwine:i386
 install fonts-wine
 install playonlinux
-# /Wine
+# Docker
+install docker-ce
+install docker-ce-cli
+install containerd.io
 
-# Postgres
-install libpq-dev
-# /Postgres
-
-install spotify-client
-install git
-install htop
-install iotop
-install vim
-install tmux
-install zsh
-install silversearcher-ag
-install powertop
-install libreoffice
-install vlc
-install tar
-install guake
-install exuberant-ctags
-install tree
-install meld
-install python3-dev
-install python3-pip
-install python3-pygments
-install fonts-powerline
-install fonts-roboto
-install 1password
-install direnv
-install snapd
-install yarn
-install postgresql-9.6
-install openrazer-meta
-install libpam-fprintd
-
-# Lenovo webcam management
-install v4l2loopback-utils
+# TeamViewer
+wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+sudo apt install ./teamviewer_amd64.deb
+rm teamviewer_amd64.deb
 
 # Direnv
 echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
@@ -140,18 +139,13 @@ sudo pip3 install thefuck
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Rbenv
-install openssl
-install libssl-dev
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc echo 'eval "$(rbenv init -)"' >> ~/.bashrc && mkdir -p ~/.rbenv/plugins && git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && rbenv install 2.7.2 && rbenv global 2.7.2
 
 # Tmux
-install libevent-dev
-install libncurses5-dev
 wget https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b.tar.gz && tar -xzf tmux-3.1b.tar.gz && cd tmux-3.1b && ./configure && make && sudo make install && cd .. && rm -rf tmux-3.1*
 
 # Nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash && nvm install node && npm install -g diff-so-fancy && npm install dredd --global && npm install aglio --global
-
 
 # Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -160,11 +154,28 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 remove nano
 
 # Apple magic keyboard configs
+
 # default with Fn keys
 # sudo echo 2 >> /sys/module/hid_apple/parameters/fnmode
 # swap option with command key
 # sudo echo 1 >> /sys/module/hid_apple/parameters/swap_opt_cmd
+
+# /etc/modprobe.d/hid_apple.conf
+# options hid_apple fnmode=2
+# options hid_apple swap_fn_leftctrl=0
+# options hid_apple swap_opt_cmd=1
+# options hid_apple rightalt_as_rightctrl=1
+# options hid_apple ejectcd_as_delete=1
+
 # /Apple magic keyboard 
+
+# Gnome extensions
+# Bitcoing market
+# Custom hot corners
+# Places status indicator
+# Removable drive menu
+# Top indicator app
+# Workspace indicator
 
 echo "Manual steps:"
 echo "Enroll fingerprint: fprintd-enroll"
