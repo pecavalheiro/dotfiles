@@ -32,12 +32,6 @@ function remove {
   fi
 }
 
-# Apple magic keyboard 
-# default with Fn keys
-sudo echo 2 >> /sys/module/hid_apple/parameters/fnmode
-# swap option with command key
-sudo echo 1 >> /sys/module/hid_apple/parameters/swap_opt_cmd
-# /Apple magic keyboard 
 
 # Postgres
 sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
@@ -131,6 +125,7 @@ install snapd
 install yarn
 install postgresql-9.6
 install openrazer-meta
+install libpam-fprintd
 
 # Lenovo webcam management
 install v4l2loopback-utils
@@ -164,9 +159,18 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Remove Nano
 remove nano
 
+# Apple magic keyboard configs
+# default with Fn keys
+# sudo echo 2 >> /sys/module/hid_apple/parameters/fnmode
+# swap option with command key
+# sudo echo 1 >> /sys/module/hid_apple/parameters/swap_opt_cmd
+# /Apple magic keyboard 
+
 echo "Manual steps:"
+echo "Enroll fingerprint: fprintd-enroll"
+echo "Add fingerprint to auth: sudo pam-auth-update"
 echo "Install ExpressVPN (download directly from website)"
-echo "Install patched hid_apple (https://github.com/free5lot/hid-apple-patched)"
+echo "Install patched hid_apple and set configs above (https://github.com/free5lot/hid-apple-patched)"
 echo "Install Franz (check franz-debian-bullseye)"
 echo "Check if tmux is being used in Guake"
 echo "Install fzf: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf and run install"
