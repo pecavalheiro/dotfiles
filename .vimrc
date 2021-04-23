@@ -129,7 +129,7 @@ if executable('ripper-tags')
   :nnoremap <F5> :! ripper-tags -R --exclude=vendor<CR>
 else
   " Ctags for ruby and javascript
-  :nnoremap <F5> :! ctags -R --languages=ruby,javascript --exclude=.git --exclude=node_modules --exclude=log . %<CR>
+  :nnoremap <F5> :! ctags -R --languages=ruby,javascript --exclude=.git --exclude=node_modules --exclude=log --exclude=public/static . %<CR>
 endif
 
 " Remove trailing spaces with F6
@@ -201,8 +201,9 @@ autocmd BufWritePost * GitGutter
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
 
+" Prevent rubocop autofix conflict
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_enter = 0
 " let g:ale_lint_on_save = 0
 let g:ale_lint_on_insert_leave = 0
 map <Leader>ale <ESC>:ALELint<CR>
