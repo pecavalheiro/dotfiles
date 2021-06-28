@@ -75,6 +75,8 @@ map <leader>bp <ESC>Obinding.pry<ESC>,s,l
 map <Leader>tt <ESC>:tabnew<CR>
 " Rubocop autofix
 map <Leader>rua <ESC>:RuboCop -a<CR>
+" Rubocop dangerous autofix
+map <Leader>ruaa <ESC>:RuboCop -A<CR>
 " Macro shortcut
 map <Leader>m @
 " Unwanted features

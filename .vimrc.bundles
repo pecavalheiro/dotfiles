@@ -1,51 +1,78 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter' " Shows a git diff
+" PROCESSING
+Plug 'w0rp/ale' " Asynchronous Lint Engine
+Plug 'vim-syntastic/syntastic' " Syntax checking
+
+" SYNTAX HIGHLIGHING
 Plug 'aliou/sql-heredoc.vim' " Syntax highlighting for SQL heredocs
-Plug 'craigemery/vim-autotag' " Ctags autotag
+Plug 'amadeus/vim-mjml' " MJML syntax (email html)
+Plug 'chr4/nginx.vim' " Nginx syntax highligh
 Plug 'ekalinin/Dockerfile.vim' " Dockerfile syntax
-Plug 'elixir-lang/vim-elixir' "Elixir support for vim
-Plug 'ervandew/supertab' " Completion
-Plug 'janko-m/vim-test' " A Vim wrapper for running tests on different granularities.
+Plug 'elixir-lang/vim-elixir' " Elixir support for vim
 Plug 'jparise/vim-graphql' " GraphQL file detection, syntax highlighting, and indentation.
 Plug 'keith/rspec.vim' " Rspec better highlight
-Plug 'kurko/autocoder.vim' " Ruby classes and unit spec generators
 Plug 'kylef/apiblueprint.vim' " API Blueprint highlight
-Plug 'martinda/Jenkinsfile-vim-syntax' " Vim Jenkins Syntax Highlight
-Plug 'mattesgroeger/vim-bookmarks' " Vim Bookmarks upgrade
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim' " Ack.vim
 Plug 'mxw/vim-jsx' "Syntax highlighting and indenting for JSX
-Plug 'chr4/nginx.vim' " Nginx syntax
-Plug 'ngmy/vim-rubocop' " RuboCop
 Plug 'pangloss/vim-javascript' " syntax highlighting and improved indentation
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'scrooloose/nerdcommenter' " NERD commenter
-Plug 'scrooloose/nerdtree' " NERD tree
-Plug 'sjl/gundo.vim' " Undo tree
 Plug 'slim-template/vim-slim' "slim syntax highlighting for vim.
-Plug 'tpope/vim-bundler' " Lightweight support for Ruby's Bundler
-Plug 'tpope/vim-endwise' " End structures automatically on ruby
-Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'tpope/vim-rails' " Rails toolbox for vim
-Plug 'tpope/vim-rake' " Vim-rails for pure ruby scripts
-Plug 'tpope/vim-speeddating' " Adds date support to C-A and C-X
-Plug 'tpope/vim-surround' " Quotes substitution
-Plug 'tpope/vim-unimpaired' " Pairs of handy bracket mappings
-Plug 'vim-airline/vim-airline' " Lean & mean status/tabline
-Plug 'vim-airline/vim-airline-themes' " Themes for Vim-Airline
-Plug 'vim-ruby/vim-ruby' " Ruby config for vim
 Plug 'vim-scripts/matchit.zip' " Vim Matchit
 Plug 'vim-scripts/ruby-matchit' " Ruby Matchit
+
+" NAVIGATION & FILE CONFIGURATION
+Plug 'vim-airline/vim-airline' " Lean & mean status/tabline
+Plug 'vim-airline/vim-airline-themes' " Themes for Vim-Airline
+Plug 'scrooloose/nerdtree' " NERD tree
 Plug 'vim-scripts/taglist.vim' " CTags
-Plug 'vim-syntastic/syntastic' " Syntax checking
-Plug 'w0rp/ale' " Asynchronous Lint Engine
-" Themes
+Plug 'ludovicchabant/vim-gutentags' " Auto indexes ctags in the background
+Plug 'danro/rename.vim' " Rename files with :rename {newname}
+" Plug 'craigemery/vim-autotag' " Ctags autotag
+
+" EDITING & MOVEMENTS
+Plug 'unblevable/quick-scope' " Highlights letters for <f>
+Plug 'easymotion/vim-easymotion'  " Motion highlights in line, across windows
+Plug 'tpope/vim-endwise' " End structures automatically on ruby
+Plug 'mattesgroeger/vim-bookmarks' " Vim Bookmarks upgrade
+
+" SEARCH
+Plug 'google/vim-searchindex' " Adds info to search results (char /)
+Plug 'mileszs/ack.vim' " Ack.vim
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'sjl/gundo.vim' " Undo tree
+
+" CODING
+Plug 'tpope/vim-surround' " Quotes substitution
+Plug 'ervandew/supertab' " Completion
+Plug 'janko-m/vim-test' " A Vim wrapper for running tests on different granularities.
+Plug 'scrooloose/nerdcommenter' " NERD commenter
+Plug 'tpope/vim-unimpaired' " Pairs of handy bracket mappings
+Plug 'tpope/vim-speeddating' " Adds date support to C-A and C-X
+Plug 'AndrewRadev/splitjoin.vim' " Split/Join lines
+
+" GIT
+Plug 'airblade/vim-gitgutter' " Shows a git diff
+Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'whiteinge/diffconflicts'
+Plug 'mhinz/vim-signify'        " Git diff in the gutter
+Plug 'junegunn/gv.vim' " Git history navigation
+
+" LANGUAGE SPECIFIC
+
+" RUBY/RAILS
+Plug 'ngmy/vim-rubocop' " RuboCop
+Plug 'tpope/vim-bundler' " Lightweight support for Ruby's Bundler
+Plug 'tpope/vim-rails' " Rails toolbox for vim
+Plug 'tpope/vim-rake' " Vim-rails for pure ruby scripts
+Plug 'vim-ruby/vim-ruby' " Ruby config for vim
+
+" THEMES
+Plug 'drewtempelmeyer/palenight.vim'
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'jpo/vim-railscasts-theme' " Railcasts Theme
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'whiteinge/diffconflicts'
+
+" SYSTEM
 Plug 'tmux-plugins/vim-tmux-focus-events' "FocusGained and FocusLost autocommand events when in Tmux
 
 call plug#end()
