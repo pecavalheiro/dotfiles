@@ -36,7 +36,7 @@
   s = status -s
   st = status
   undo = reset --soft HEAD~1
-  up = !git fetch origin && git rebase origin/master
+  up = !git fetch && git rebase
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
