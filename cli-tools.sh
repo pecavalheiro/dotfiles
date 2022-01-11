@@ -68,6 +68,7 @@ install vim
 install vlc
 install yarn
 install zsh
+install xclip
 
 # Lenovo webcam management
 install v4l2loopback-utils
