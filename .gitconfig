@@ -29,7 +29,7 @@
     git push --set-upstream origin $branch_name && \
     git checkout '@{-2}'; \
     }; f"
-  l = log --pretty=format:'%C(yellow)%h %C(blue)<<%an>> %C(green)%ad%C(yellow)%d%Creset %s %Creset' --date=short --abbrev-commit -n 15
+  l = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short --abbrev-commit -n 15
   mm = ! git stash -u && git checkout master && (git fetch origin && git rebase origin/master && git checkout - ) && git rebase master && git stash pop
   pl = pull
   ps = push
