@@ -93,6 +93,13 @@ noremap <Home> <NOP>
 noremap <End> <NOP>
 noremap <Del> <NOP>
 
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register without yanking it
+vnoremap <leader>p "_dP
+
 " FZF mappings
 " fzf by filename
 map <C-p> :FZF<CR>
@@ -241,3 +248,11 @@ let g:lsp_log_file=''
 endif
 
 let g:rainbow_active = 1
+
+let test#ruby#use_spring_binstub = 1
+
+let g:endwise_no_mappings = v:true
+imap <silent><expr> <CR> pumvisible() ? (complete_info().selected == -1 ? "\<C-e>\<CR>\<Plug>DiscretionaryEnd" : "\<C-y>") : "\<CR>\<Plug>DiscretionaryEnd"
+
+let g:gitgutter_preview_win_location = 'bo'
+let g:gitgutter_preview_win_floating = 0

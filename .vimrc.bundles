@@ -41,7 +41,8 @@ Plug 'mattesgroeger/vim-bookmarks' " Vim Bookmarks upgrade
 " SEARCH
 Plug 'google/vim-searchindex' " Adds info to search results (char /)
 " Plug 'mileszs/ack.vim' " Ack.vim
-Plug '/usr/local/opt/fzf'
+"Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Plug 'sjl/gundo.vim' " Undo tree
 
@@ -74,6 +75,9 @@ Plug 'ngmy/vim-rubocop' " RuboCop
 Plug 'drewtempelmeyer/palenight.vim'
 " " Plug 'ayu-theme/ayu-vim'
 " " Plug 'jpo/vim-railscasts-theme' " Railcasts Theme
+
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " SYSTEM
 " Plug 'tmux-plugins/vim-tmux-focus-events' "FocusGained and FocusLost autocommand events when in Tmux
