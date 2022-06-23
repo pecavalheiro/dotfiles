@@ -1,5 +1,6 @@
 alias ccat='pygmentize -f terminal256 -O style=native -g'
 alias dbrebuild='bundle exec rake db:drop db:create db:migrate; RAILS_ENV=test bundle exec rake db:drop db:create db:migrate;'
+alias dbreload='bundle exec rake db:drop db:create db:schema:load; RAILS_ENV=test bundle exec rake db:drop db:create db:schema:load;'
 alias rmswp='rm -f $(find . -name *.swp) > /dev/null; rm -f $(find . -name *.swo) > /dev/null; rm -f $(find . -name *.sw) > /dev/null; rm -f /var/tmp/*.swp > /dev/null'
 alias c='clear'
 eval $(thefuck --alias)

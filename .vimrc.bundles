@@ -25,31 +25,29 @@ Plug 'vim-scripts/ruby-matchit' " Ruby Matchit
 " NAVIGATION & FILE CONFIGURATION
 Plug 'vim-airline/vim-airline' " Lean & mean status/tabline
 Plug 'vim-airline/vim-airline-themes' " Themes for Vim-Airline
-Plug 'scrooloose/nerdtree' " NERD tree
-"Plug 'vim-scripts/taglist.vim' " CTags
+"Plug 'scrooloose/nerdtree' " NERD tree
+Plug 'antoinemadec/FixCursorHold.nvim' " Required for Fern
+Plug 'lambdalisue/fern.vim' " Tree viewer
 Plug 'ludovicchabant/vim-gutentags' " Auto indexes ctags in the background
-Plug 'danro/rename.vim' " Rename files with :rename {newname}
-"Plug 'soramugi/auto-ctags.vim' " Ctags autotag
 
 " EDITING & MOVEMENTS
 Plug 'unblevable/quick-scope' " Highlights letters for <f>
-" Plug 'easymotion/vim-easymotion'  " Motion highlights in line, across windows
-Plug 'tpope/vim-endwise' " End structures automatically on ruby
+"Plug 'tpope/vim-endwise' " End structures automatically on ruby
+"Plug 'cohama/lexima.vim'  " Auto close parentheses
 Plug 'tpope/vim-repeat' " Remap . to repeat plugin remaps
 Plug 'mattesgroeger/vim-bookmarks' " Vim Bookmarks upgrade
 
 " SEARCH
 Plug 'google/vim-searchindex' " Adds info to search results (char /)
 " Plug 'mileszs/ack.vim' " Ack.vim
-"Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'sjl/gundo.vim' " Undo tree
 
 " CODING
 Plug 'tpope/vim-surround' " Quotes substitution
-" " Plug 'ervandew/supertab' " Completion
+" Plug 'ervandew/supertab' " Completion
 Plug 'janko-m/vim-test' " A Vim wrapper for running tests on different granularities.
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdcommenter' " NERD commenter
 Plug 'tpope/vim-unimpaired' " Pairs of handy bracket mappings
 Plug 'tpope/vim-speeddating' " Adds date support to C-A and C-X
@@ -81,6 +79,10 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " SYSTEM
 " Plug 'tmux-plugins/vim-tmux-focus-events' "FocusGained and FocusLost autocommand events when in Tmux
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-session'
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
 
 " NeoVim Specific
 if has('nvim')

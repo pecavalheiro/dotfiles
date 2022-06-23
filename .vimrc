@@ -56,10 +56,6 @@ let &showbreak='↪ '
 highlight ColorColumn ctermbg=88 guibg=#d70000
 set colorcolumn=80,100
 
-" Highlights text over 100 columns
-"au BufWinEnter * let w:m1=matchadd('Search', '\%<101v.\%>77v', -1)
-"au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
-
 " Grey cursor line
 augroup CursorLine
  au!
@@ -106,7 +102,7 @@ map <C-p> :FZF<CR>
 " fzf file content
 nnoremap <C-g> :Rg<Cr>
 
-" RSpec.vim mappings
+" vim-test mappings
 map <Leader>t :TestFile<CR>
 map <Leader>a :TestSuite<CR>
 map <Leader>n :TestNearest<CR>
@@ -119,28 +115,9 @@ map <Leader>gb <ESC>:Git blame<CR>
 map <Leader>cgb <ESC>:q<CR>:Git blame<CR>
 map <Leader>cgbi <ESC>:q<CR>:Git blame<CR>i
 
-" NERDTree in ctrl + n
-map <C-n> :NERDTreeToggle<CR>
-" 
 " Show hidden files in CTRLP
 let g:ctrlp_show_hidden = 1
-" 
-" Close Vim if NERDTree is the only window left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" 
-" " Ruby Autocomplete Buffer
-" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" 
-" if executable('ripper-tags')
-"   " Ripper-tags (better ctags for ruby)
-"   :nnoremap <F5> :! ripper-tags -R --exclude=vendor<CR>
-" else
-"   " Ctags for ruby and javascript
-"   :nnoremap <F5> :! ctags -R --languages=ruby,javascript --exclude=.git --exclude=node_modules --exclude=log --exclude=public/static . %<CR>
-" endif
-" 
+
 " Remove trailing spaces with F6
 :nnoremap <silent> <F6> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " 
@@ -168,32 +145,18 @@ let g:fzf_layout = { 'window': 'botright new' }
 " make backspace work like most other programs
 set backspace=2
 
-" " Highlights nginx.conf files
+" Highlights nginx.conf files
 autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
 
-" " Idents xml files with xmllink (needs libxml2-utils)
-" au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-
-" " Add vim-fugitive to status line
+" Add vim-fugitive to status line
 set statusline+=%{fugitive#statusline()}
 
 " Prevents Vim from scrolling when splitting the window horizontally.
 nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
 
-" " Use eslint for javascript linting
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exe = 'yarn eslint --'
-
-" " GitGutter workaround for updating buffer
+" GitGutter workaround for updating buffer
 autocmd BufWritePost * GitGutter
 
-" Prevent rubocop autofix conflict
-" let g:ale_lint_on_text_changed = 'never'
-" "let g:ale_lint_on_enter = 0
-" " let g:ale_lint_on_save = 0
-" let g:ale_lint_on_insert_leave = 0
-" map <Leader>ale <ESC>:ALELint<CR>
-" let g:ale_cache_executable_check_failures = 1
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['prettier'],
@@ -202,23 +165,6 @@ let g:ale_fixers = {
 " optional: Auto-correct on save.
 let g:ale_fix_on_save = 1
 
-" if &term =~ '256color'
-"     set t_ut=
-" endif
-
-" " Add spaces after comment delimiters by default
-" let g:NERDSpaceDelims = 1
-" " Align line-wise comment delimiters flush left instead of following code indentation
-" let g:NERDDefaultAlign = 'left'
-" " Enable trimming of trailing whitespace when uncommenting
-" let g:NERDTrimTrailingWhitespace = 1
-" " Enable NERDCommenterToggle to check all selected lines is commented or not
-" let g:NERDToggleCheckAllLines = 1
-
-" " Use bin/rubocop instead of rubocop if available
-" if executable('bin/rubocop')
-"   let g:vimrubocop_rubocop_cmd = 'bin/rubocop '
-" endif
 
 if has('nvim')
 let g:coq_settings = { 'auto_start': 'shut-up' }
@@ -232,9 +178,6 @@ lua << EOF
   vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 EOF
 
-" Prevent quit lag with gutentags
-"set nofsync
-
 " Auto generate ctags on save
 let g:auto_ctags = 1
 let g:auto_ctags_warn_once = 1
@@ -243,8 +186,6 @@ let g:auto_ctags_warn_once = 1
 let g:lsp_diagnostics_enabled=0 " Let ALE handle diagnostics
 let g:lsp_fold_enabled=0
 let g:lsp_log_file=''
-
-" let g:loaded_ruby_provider = 0
 endif
 
 let g:rainbow_active = 1
@@ -256,3 +197,70 @@ imap <silent><expr> <CR> pumvisible() ? (complete_info().selected == -1 ? "\<C-e
 
 let g:gitgutter_preview_win_location = 'bo'
 let g:gitgutter_preview_win_floating = 0
+
+" .............................................................................
+" lambdalisue/fern.vim
+" .............................................................................
+
+" Disable netrw.
+"let g:loaded_netrw  = 1
+"let g:loaded_netrwPlugin = 1
+"let g:loaded_netrwSettings = 1
+"let g:loaded_netrwFileHandlers = 1
+
+"augroup my-fern-hijack
+  "autocmd!
+  "autocmd BufEnter * ++nested call s:hijack_directory()
+"augroup END
+
+"function! s:hijack_directory() abort
+  "let path = expand('%:p')
+  "if !isdirectory(path)
+    "return
+  "endif
+  "bwipeout %
+  "execute printf('Fern %s', fnameescape(path))
+"endfunction
+
+" Custom settings and mappings.
+let g:fern#disable_default_mappings = 1
+
+"noremap <silent> <Leader>f :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
+noremap <silent> <C-n> :Fern . -drawer -width=35 -toggle<CR><C-w>=
+noremap <silent> <Leader>f :Fern . -drawer -reveal=% -width=35<CR><C-w>=
+noremap <silent> <Leader>. :Fern %:h -drawer -width=35<CR><C-w>=
+
+function! FernInit() abort
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-open-expand-collapse)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open:select)",
+        \   "\<Plug>(fern-action-expand)",
+        \   "\<Plug>(fern-action-collapse)",
+        \ )
+  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> o <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> go <Plug>(fern-action-open:edit)<C-w>p
+  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> c <Plug>(fern-action-copy)
+  nmap <buffer> n <Plug>(fern-action-new-path)
+  nmap <buffer> d <Plug>(fern-action-remove)
+  nmap <buffer> m <Plug>(fern-action-move)
+  nmap <buffer> r <Plug>(fern-action-rename)
+  nmap <buffer> <nowait> h <Plug>(fern-action-hidden:toggle)
+  nmap <buffer> u <Plug>(fern-action-reload)
+  nmap <buffer> x <Plug>(fern-action-mark:toggle)
+  nmap <buffer> s <Plug>(fern-action-open:split)
+  nmap <buffer> v <Plug>(fern-action-open:vsplit)
+  nmap <buffer><nowait> < <Plug>(fern-action-leave)
+  nmap <buffer><nowait> > <Plug>(fern-action-enter)
+endfunction
+
+augroup FernGroup
+  autocmd!
+  autocmd FileType fern call FernInit()
+augroup END
+
+" vim session autosave
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'

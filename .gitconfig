@@ -2,6 +2,7 @@
   diff = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
 [alias]
+  ; $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) is used to detect if master or main is being used in the repo
   a = add
   aa = add -A
   b = branch
@@ -17,9 +18,9 @@
   flush = !git reset --hard && git clean -df
   hf = "!f() { \
     git stash -u && \
-    git checkout master && \
+    git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
     git fetch origin && \
-    git rebase origin/master && \
+    git rebase $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
     branch_name=$1 && \
     shift && \
     git checkout -b $branch_name && \
@@ -30,7 +31,15 @@
     git checkout '@{-2}'; \
     }; f"
   l = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short --abbrev-commit -n 15
-  mm = ! git stash -u && git checkout master && (git fetch origin && git rebase origin/master && git checkout - ) && git rebase master && git stash pop
+  mm = "!f() { \
+    git stash -u && \
+    git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
+    (git fetch origin && \
+    git rebase $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
+    git checkout - ) && \
+    git rebase $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
+    git stash pop; \
+    }; f"
   pl = pull
   ps = push
   s = status -s
