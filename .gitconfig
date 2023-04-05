@@ -10,6 +10,7 @@
   c = commit
   cb = checkout -b
   chk = checkout
+  chm = "!f() { git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD); }; f"
   chko = checkout --ours
   chkt = checkout --theirs
   cm = commit -m
@@ -34,9 +35,8 @@
   mm = "!f() { \
     git stash -u && \
     git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
-    (git fetch origin && \
-    git rebase $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
-    git checkout - ) && \
+    git up && \
+    git checkout - && \
     git rebase $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
     git stash pop; \
     }; f"
@@ -73,6 +73,8 @@
   added = yellow
   changed = green
   untracked = cyan
+[fetch]
+  prune = true
 [push]
   default = tracking
 [include]
