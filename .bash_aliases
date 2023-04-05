@@ -11,7 +11,7 @@ alias be='bundle exec'
 alias bu='bundle'
 alias dbdocker='docker run -d -e POSTGRES_USER="$USER" -p 5432:5432 -v local-pg:/var/lib/postgresql/data postgres:10.3'
 alias rake='bundle exec rake'
-alias rib='rubocop -a $(git diff master..  --name-only  | xargs ls -d 2>/dev/null)'
-alias riba='rubocop -A $(git diff master..  --name-only  | xargs ls -d 2>/dev/null)'
-alias cib='git diff master..  --name-only  | xargs ls -d 2>/dev/null'
+alias rib="rubocop -a \$(git diff \$(awk -F '/' '{print \$NF}' .git/refs/remotes/origin/HEAD).. --name-only  | xargs ls -d 2>/dev/null)"
+alias riba="rubocop -A \$(git diff \$(awk -F '/' '{print \$NF}' .git/refs/remotes/origin/HEAD).. --name-only  | xargs ls -d 2>/dev/null)"
+alias cib="git diff \$(awk -F '/' '{print \$NF}' .git/refs/remotes/origin/HEAD)..  --name-only  | xargs ls -d 2>/dev/null"
 alias vim='nvim'
