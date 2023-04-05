@@ -17,9 +17,11 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:. " Shows hidden characters
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set background=dark
-colorscheme palenight
-let g:palenight_terminal_italics=1
+"set background=dark
+let g:edge_style = 'default'
+let g:edge_better_performance = 1
+colorscheme edge
+"let g:palenight_terminal_italics=1
 set history=100                               " History limit
 set undolevels=100                            " Undo levels limit
 set timeoutlen=400                            " Timeout for leader key
@@ -45,6 +47,9 @@ set smartcase                                 " Case sensitive search only when 
 highlight LineNr ctermfg=darkgrey
 set clipboard=unnamed                         " Share clipboard between tmux and vim
 set rtp+=~/.fzf
+
+" Disable mouse
+set mouse=
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
@@ -98,9 +103,10 @@ vnoremap <leader>p "_dP
 
 " FZF mappings
 " fzf by filename
-map <C-p> :FZF<CR>
+map <C-p> :Files<CR>
 " fzf file content
 nnoremap <C-g> :Rg<Cr>
+let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
 
 " vim-test mappings
 map <Leader>t :TestFile<CR>
@@ -109,6 +115,8 @@ map <Leader>n :TestNearest<CR>
 map <Leader>l :TestLast<CR>
 map <Leader>g :TestVisit<CR>
 map <Leader>ss <ESC>:w<CR>:TestFile<CR>
+" back and forth between test and implementation
+nnoremap <Leader>gt :A<CR> 
 
 " Git mappings
 map <Leader>gb <ESC>:Git blame<CR>
@@ -128,16 +136,22 @@ xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='deus'
+let g:airline_theme='edge'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_section_a = airline#section#create(['mode']) " default: mode, crypt, paste, spell, iminsert
+let g:airline_section_b = airline#section#create(['hunks','']) " default hunks, branch
+let g:airline_section_x = airline#section#create(['tagbar']) " default tagbar, filetype, virtualenv
+let g:airline_section_y = airline#section#create([]) " default fileencoding, fileformat, 'bom', 'eol'
+
  
 " Lists all buffers and waits for input
 nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Prefer RipGrep over AG (faster)
-command! -bang -nargs=* Rg
- \ call fzf#vim#grep(
- \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
- \   fzf#vim#with_preview(), <bang>0)
+"command! -bang -nargs=* Rg
+ "\ call fzf#vim#grep(
+ "\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+ "\   fzf#vim#with_preview(), <bang>0)
 
 " (FZF) Open a new buffer at the bottom
 let g:fzf_layout = { 'window': 'botright new' }
@@ -157,14 +171,24 @@ nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
 " GitGutter workaround for updating buffer
 autocmd BufWritePost * GitGutter
 
+
+let g:ale_linters = {
+\   'json': ['jq', 'jsonlint'],
+\}
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
-\   'javascript': ['prettier'],
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'eslint'],
+\   'json': ['jq'],
 \}
 
 " optional: Auto-correct on save.
 let g:ale_fix_on_save = 1
 
+
+  "require("coq_3p") {
+    "{ src = "copilot", short_name = "COP", accept_key = "<c-f>" }
+  "}
 
 if has('nvim')
 let g:coq_settings = { 'auto_start': 'shut-up' }
@@ -176,6 +200,36 @@ lua << EOF
   lsp.tsserver.setup{}
   lsp.tsserver.setup(coq.lsp_ensure_capabilities{})
   vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+
+  require('copilot').setup({
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    debounce = 75,
+    keymap = {
+      accept = "<c-f>",
+      accept_word = false,
+      accept_line = false,
+      next = "<c-j>",
+      prev = "<c-k>",
+      dismiss = "<esc>",
+    },
+  },
+  filetypes = {
+    yaml = false,
+    markdown = false,
+    help = false,
+    gitcommit = false,
+    gitrebase = false,
+    hgcommit = false,
+    svn = false,
+    cvs = false,
+    ["."] = false,
+  },
+  copilot_node_command = 'node', -- Node.js version must be > 16.x
+  server_opts_overrides = {},
+  })
+  
 EOF
 
 " Auto generate ctags on save
@@ -191,6 +245,7 @@ endif
 let g:rainbow_active = 1
 
 let test#ruby#use_spring_binstub = 1
+"let test#ruby#rspec#executable = 'rspec'
 
 let g:endwise_no_mappings = v:true
 imap <silent><expr> <CR> pumvisible() ? (complete_info().selected == -1 ? "\<C-e>\<CR>\<Plug>DiscretionaryEnd" : "\<C-y>") : "\<CR>\<Plug>DiscretionaryEnd"
@@ -200,6 +255,7 @@ let g:gitgutter_preview_win_floating = 0
 
 " .............................................................................
 " lambdalisue/fern.vim
+" .............................................................................
 " .............................................................................
 
 " Disable netrw.

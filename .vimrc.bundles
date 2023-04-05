@@ -2,6 +2,8 @@ call plug#begin('~/.vim/plugged')
 
 " PROCESSING
 Plug 'w0rp/ale' " Asynchronous Lint Engine
+"Plug 'github/copilot.vim'
+Plug 'zbirenbaum/copilot.lua'
 " Plug 'vim-syntastic/syntastic' " Syntax checking
 
 " SYNTAX HIGHLIGHING
@@ -29,6 +31,7 @@ Plug 'vim-airline/vim-airline-themes' " Themes for Vim-Airline
 Plug 'antoinemadec/FixCursorHold.nvim' " Required for Fern
 Plug 'lambdalisue/fern.vim' " Tree viewer
 Plug 'ludovicchabant/vim-gutentags' " Auto indexes ctags in the background
+Plug 'tpope/vim-projectionist' " Configurable projections (like go to test file and back)
 
 " EDITING & MOVEMENTS
 Plug 'unblevable/quick-scope' " Highlights letters for <f>
@@ -47,7 +50,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround' " Quotes substitution
 " Plug 'ervandew/supertab' " Completion
 Plug 'janko-m/vim-test' " A Vim wrapper for running tests on different granularities.
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+"Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdcommenter' " NERD commenter
 Plug 'tpope/vim-unimpaired' " Pairs of handy bracket mappings
 Plug 'tpope/vim-speeddating' " Adds date support to C-A and C-X
@@ -70,9 +73,10 @@ Plug 'ngmy/vim-rubocop' " RuboCop
 " Plug 'vim-ruby/vim-ruby' " Ruby config for vim
 
 " THEMES
-Plug 'drewtempelmeyer/palenight.vim'
-" " Plug 'ayu-theme/ayu-vim'
-" " Plug 'jpo/vim-railscasts-theme' " Railcasts Theme
+" Plug 'drewtempelmeyer/palenight.vim'
+ Plug 'sainnhe/edge'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'jpo/vim-railscasts-theme' " Railcasts Theme
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -89,6 +93,7 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
   Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+  Plug 'ms-jpq/coq.thirdparty'
 endif
 
 call plug#end()
