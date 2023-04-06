@@ -1,5 +1,3 @@
-set nocompatible                              " be iMproved, required
-filetype off                                  " required
 
 " better organization for Plug
 if filereadable(expand("~/.vimrc.bundles"))
@@ -7,66 +5,20 @@ if filereadable(expand("~/.vimrc.bundles"))
 endif
 
 let mapleader = ","
-set t_Co=256
-set showmode                                  " Shows current mode (insert, visual, replace)
-" syntax on                                     " Enables syntax
-set number                                    " Shows line numbers
-set ruler                                     " Shows line and column numbers
-set list                                      " Diffs between tabs, spaces and trailing blanks
-set listchars=tab:>.,trail:.,extends:#,nbsp:. " Shows hidden characters
-set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"set background=dark
 let g:edge_style = 'default'
 let g:edge_better_performance = 1
 colorscheme edge
-"let g:palenight_terminal_italics=1
-set history=100                               " History limit
-set undolevels=100                            " Undo levels limit
-set timeoutlen=400                            " Timeout for leader key
-set visualbell                                " Disable annoying sound
-filetype on                                   " Enable filetype detection
 filetype indent on                            " Load indent file for the current filetype
 filetype plugin on                            " Enable filetype-specific plugins
-set expandtab                                 " Tabs to spaces
-set tabstop=2 softtabstop=2                   " Tab width
-set shiftwidth=2                              " >>, << and == width
-set autoindent                                " Copy the indentation from the previous line
-set smartindent
-set diffopt+=vertical                         " Vertical Gdiff
-set hlsearch                                  " Highlight matches.
-set incsearch                                 " Show search matches as you type
-set autoread                                  " Auto reload files when externally modified.
-set title                                     " Sets the title of the window
-set pastetoggle=<F2>                          " Enables paste mode
-set tags=tags                                 " ctags
-set ignorecase                                " Workaround for smartcase
-set smartcase                                 " Case sensitive search only when uppercase
-" set nowrap                                  " Line wrapping
 highlight LineNr ctermfg=darkgrey
-set clipboard=unnamed                         " Share clipboard between tmux and vim
-set rtp+=~/.fzf
-
-" Disable mouse
-set mouse=
 
 " Enter clears search highlight
 nmap <CR> :nohlsearch<CR>
 
-" String to put at the start of lines that have been wrapped "
-let &showbreak='↪ '
-
 " Red column at position 80
 highlight ColorColumn ctermbg=88 guibg=#d70000
-set colorcolumn=80,100
-
-" Grey cursor line
-augroup CursorLine
- au!
- au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
- au WinLeave * setlocal nocursorline
-augroup END
 
 " Default mappings
 map <leader>s <ESC>:w<CR>
@@ -156,14 +108,8 @@ nnoremap <Leader>b :ls<CR>:b<Space>
 " (FZF) Open a new buffer at the bottom
 let g:fzf_layout = { 'window': 'botright new' }
 
-" make backspace work like most other programs
-set backspace=2
-
 " Highlights nginx.conf files
 autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
-
-" Add vim-fugitive to status line
-set statusline+=%{fugitive#statusline()}
 
 " Prevents Vim from scrolling when splitting the window horizontally.
 nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
@@ -232,6 +178,8 @@ lua << EOF
   
 EOF
 
+" color highlight fix
+
 " Auto generate ctags on save
 let g:auto_ctags = 1
 let g:auto_ctags_warn_once = 1
@@ -245,7 +193,8 @@ endif
 let g:rainbow_active = 1
 
 let test#ruby#use_spring_binstub = 1
-"let test#ruby#rspec#executable = 'rspec'
+let test#ruby#rspec#executable = 'rspec'
+" 
 
 let g:endwise_no_mappings = v:true
 imap <silent><expr> <CR> pumvisible() ? (complete_info().selected == -1 ? "\<C-e>\<CR>\<Plug>DiscretionaryEnd" : "\<C-y>") : "\<CR>\<Plug>DiscretionaryEnd"
