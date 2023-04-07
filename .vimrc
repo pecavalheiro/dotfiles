@@ -4,86 +4,25 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-let mapleader = ","
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let g:edge_style = 'default'
 let g:edge_better_performance = 1
+"let g:ctrlp_match_window = 'min:4,max:72'
 colorscheme edge
 filetype indent on                            " Load indent file for the current filetype
 filetype plugin on                            " Enable filetype-specific plugins
 highlight LineNr ctermfg=darkgrey
-
-" Enter clears search highlight
-nmap <CR> :nohlsearch<CR>
+set rtp+=/opt/homebrew/opt/fzf
 
 " Red column at position 80
 highlight ColorColumn ctermbg=88 guibg=#d70000
 
-" Default mappings
-map <leader>s <ESC>:w<CR>
-map <leader>q <ESC>:q<CR>
-map <leader>bp <ESC>Obinding.pry<ESC>,s,l
-" Tabs mapping
-map <Leader>tt <ESC>:tabnew<CR>
-" Rubocop autofix
-map <Leader>rua <ESC>:RuboCop -a<CR>
-" Rubocop dangerous autofix
-map <Leader>ruaa <ESC>:RuboCop -A<CR>
-" Macro shortcut
-map <Leader>m @
-" Unwanted features
-map q: <NOP>
-noremap Q <NOP>
-" Disable arrows and home keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-noremap <PageUp> <NOP>
-noremap <PageDown> <NOP>
-noremap <Home> <NOP>
-noremap <End> <NOP>
-noremap <Del> <NOP>
-
-" delete without yanking
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-
-" replace currently selected text with default register without yanking it
-vnoremap <leader>p "_dP
-
-" FZF mappings
-" fzf by filename
-map <C-p> :Files<CR>
-" fzf file content
-nnoremap <C-g> :Rg<Cr>
 let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
-
-" vim-test mappings
-map <Leader>t :TestFile<CR>
-map <Leader>a :TestSuite<CR>
-map <Leader>n :TestNearest<CR>
-map <Leader>l :TestLast<CR>
-map <Leader>g :TestVisit<CR>
-map <Leader>ss <ESC>:w<CR>:TestFile<CR>
-" back and forth between test and implementation
-nnoremap <Leader>gt :A<CR> 
-
-" Git mappings
-map <Leader>gb <ESC>:Git blame<CR>
-map <Leader>cgb <ESC>:q<CR>:Git blame<CR>
-map <Leader>cgbi <ESC>:q<CR>:Git blame<CR>i
+let g:fzf_layout = { 'down': '20%' }
 
 " Show hidden files in CTRLP
 let g:ctrlp_show_hidden = 1
-
-" Remove trailing spaces with F6
-:nnoremap <silent> <F6> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-" 
-" Don't overwrite register when pasting
-xnoremap <expr> p 'pgv"'.v:register.'y`>'
-xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
@@ -95,28 +34,11 @@ let g:airline_section_b = airline#section#create(['hunks','']) " default hunks, 
 let g:airline_section_x = airline#section#create(['tagbar']) " default tagbar, filetype, virtualenv
 let g:airline_section_y = airline#section#create([]) " default fileencoding, fileformat, 'bom', 'eol'
 
- 
-" Lists all buffers and waits for input
-nnoremap <Leader>b :ls<CR>:b<Space>
-
-" Prefer RipGrep over AG (faster)
-"command! -bang -nargs=* Rg
- "\ call fzf#vim#grep(
- "\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
- "\   fzf#vim#with_preview(), <bang>0)
-
-" (FZF) Open a new buffer at the bottom
-let g:fzf_layout = { 'window': 'botright new' }
-
 " Highlights nginx.conf files
 autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
 
-" Prevents Vim from scrolling when splitting the window horizontally.
-nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
-
 " GitGutter workaround for updating buffer
 autocmd BufWritePost * GitGutter
-
 
 let g:ale_linters = {
 \   'json': ['jq', 'jsonlint'],
@@ -130,11 +52,6 @@ let g:ale_fixers = {
 
 " optional: Auto-correct on save.
 let g:ale_fix_on_save = 1
-
-
-  "require("coq_3p") {
-    "{ src = "copilot", short_name = "COP", accept_key = "<c-f>" }
-  "}
 
 if has('nvim')
 let g:coq_settings = { 'auto_start': 'shut-up' }
@@ -175,17 +92,17 @@ lua << EOF
   copilot_node_command = 'node', -- Node.js version must be > 16.x
   server_opts_overrides = {},
   })
-  
+
 EOF
 
-" color highlight fix
-
 " Auto generate ctags on save
+"
 let g:auto_ctags = 1
 let g:auto_ctags_warn_once = 1
 
 " LSP
-let g:lsp_diagnostics_enabled=0 " Let ALE handle diagnostics
+" Let ALE handle diagnostics
+let g:lsp_diagnostics_enabled=0 
 let g:lsp_fold_enabled=0
 let g:lsp_log_file=''
 endif
@@ -194,46 +111,15 @@ let g:rainbow_active = 1
 
 let test#ruby#use_spring_binstub = 1
 let test#ruby#rspec#executable = 'rspec'
-" 
 
 let g:endwise_no_mappings = v:true
-imap <silent><expr> <CR> pumvisible() ? (complete_info().selected == -1 ? "\<C-e>\<CR>\<Plug>DiscretionaryEnd" : "\<C-y>") : "\<CR>\<Plug>DiscretionaryEnd"
 
 let g:gitgutter_preview_win_location = 'bo'
 let g:gitgutter_preview_win_floating = 0
 
-" .............................................................................
-" lambdalisue/fern.vim
-" .............................................................................
-" .............................................................................
-
-" Disable netrw.
-"let g:loaded_netrw  = 1
-"let g:loaded_netrwPlugin = 1
-"let g:loaded_netrwSettings = 1
-"let g:loaded_netrwFileHandlers = 1
-
-"augroup my-fern-hijack
-  "autocmd!
-  "autocmd BufEnter * ++nested call s:hijack_directory()
-"augroup END
-
-"function! s:hijack_directory() abort
-  "let path = expand('%:p')
-  "if !isdirectory(path)
-    "return
-  "endif
-  "bwipeout %
-  "execute printf('Fern %s', fnameescape(path))
-"endfunction
-
 " Custom settings and mappings.
+"
 let g:fern#disable_default_mappings = 1
-
-"noremap <silent> <Leader>f :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
-noremap <silent> <C-n> :Fern . -drawer -width=35 -toggle<CR><C-w>=
-noremap <silent> <Leader>f :Fern . -drawer -reveal=% -width=35<CR><C-w>=
-noremap <silent> <Leader>. :Fern %:h -drawer -width=35<CR><C-w>=
 
 function! FernInit() abort
   nmap <buffer><expr>
@@ -267,5 +153,6 @@ augroup FernGroup
 augroup END
 
 " vim session autosave
+"
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'

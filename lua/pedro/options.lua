@@ -17,7 +17,7 @@ local options = {
   incsearch = true,                                 -- show search matches while typing
   list = true,                                      -- Show some invisible characters (tabs...)
   listchars = "tab:»·,trail:·,nbsp:·,extends:#",    -- Unicode characters used for rendering whitespace
-  mouse = "a",                                      -- Allow the mouse to be used in neovim
+  mouse = "",
   number = true,                                    -- set numbered lines
   numberwidth = 3,                                  -- set number column width to 3 {default 4}
   pastetoggle = "<F2>",                             -- Enables paste mode
@@ -53,6 +53,7 @@ local options = {
 
 vim.opt.diffopt:append "vertical"                       -- GitHub style diff
 vim.opt.statusline:append "%{fugitive#statusline()}"    -- Fugitive status in status line
+vim.opt.rtp:append "~/.fzf"    -- Fugitive status in status line
 
 for k, v in pairs(options) do
   vim.opt[k] = v
