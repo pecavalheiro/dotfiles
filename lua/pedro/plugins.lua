@@ -41,7 +41,7 @@ end
 return packer.startup(function(use)
 
   -- PROCESSING
-  use "w0rp/ale"                -- Asynchronous Lint Engine
+  use "dense-analysis/ale"              -- Asynchronous Lint Engine
 
   -- SYNTAX HIGHLIGHING
   --use "jparise/vim-graphql"             -- GraphQL file detection, syntax highlighting, and indentation.
