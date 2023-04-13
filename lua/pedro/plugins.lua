@@ -100,7 +100,8 @@ return packer.startup(function(use)
   use "ngmy/vim-rubocop"                -- RuboCop
 
   -- THEMES
-  use "sainnhe/edge"
+  --use "sainnhe/edge"
+  use "folke/tokyonight.nvim"
   --   use "ayu-theme/ayu-vim"
   --   use "drewtempelmeyer/palenight.vim"
   --   use "jpo/vim-railscasts-theme"   -- Railcasts Theme

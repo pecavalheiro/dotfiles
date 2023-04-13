@@ -3,7 +3,6 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let g:edge_style = 'default'
 let g:edge_better_performance = 1
 "let g:ctrlp_match_window = 'min:4,max:72'
-colorscheme edge
 filetype indent on                            " Load indent file for the current filetype
 filetype plugin on                            " Enable filetype-specific plugins
 highlight LineNr ctermfg=darkgrey
