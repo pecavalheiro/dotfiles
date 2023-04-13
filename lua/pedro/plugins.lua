@@ -42,7 +42,6 @@ return packer.startup(function(use)
 
   -- PROCESSING
   use "w0rp/ale"                -- Asynchronous Lint Engine
-  use "zbirenbaum/copilot.lua"  -- Better copilot
 
   -- SYNTAX HIGHLIGHING
   --use "jparise/vim-graphql"             -- GraphQL file detection, syntax highlighting, and indentation.
@@ -83,13 +82,10 @@ return packer.startup(function(use)
   -- CODING
   use "AndrewRadev/splitjoin.vim"       -- Split/Join lines
   use "janko-m/vim-test"                -- A Vim wrapper for running tests on different granularities.
-  use "ms-jpq/coq.thirdparty"
   use "scrooloose/nerdcommenter"        -- NERD commenter
   use "tpope/vim-speeddating"           -- Adds date support to C-A and C-X
   use "tpope/vim-surround"              -- Quotes substitution
   use "tpope/vim-unimpaired"            -- Pairs of handy bracket mappings
-  use { "ms-jpq/coq.artifacts", branch = "artifacts"}
-  use { "ms-jpq/coq_nvim", branch = "coq" }
 
   -- GIT
   use "airblade/vim-gitgutter"          -- Shows a git diff

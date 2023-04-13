@@ -47,57 +47,16 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 
 if has('nvim')
-let g:coq_settings = { 'auto_start': 'shut-up' }
-lua << EOF
-  local lsp = require "lspconfig"
-  local coq = require "coq"
-  lsp.solargraph.setup{}
-  lsp.solargraph.setup(coq.lsp_ensure_capabilities{})
-  lsp.tsserver.setup{}
-  lsp.tsserver.setup(coq.lsp_ensure_capabilities{})
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+  " Auto generate ctags on save
+  "
+  let g:auto_ctags = 1
+  let g:auto_ctags_warn_once = 1
 
-  require('copilot').setup({
-  suggestion = {
-    enabled = true,
-    auto_trigger = true,
-    debounce = 75,
-    keymap = {
-      accept = "<c-f>",
-      accept_word = false,
-      accept_line = false,
-      next = "<c-j>",
-      prev = "<c-k>",
-      dismiss = "<esc>",
-    },
-  },
-  filetypes = {
-    yaml = false,
-    markdown = false,
-    help = false,
-    gitcommit = false,
-    gitrebase = false,
-    hgcommit = false,
-    svn = false,
-    cvs = false,
-    ["."] = false,
-  },
-  copilot_node_command = 'node', -- Node.js version must be > 16.x
-  server_opts_overrides = {},
-  })
-
-EOF
-
-" Auto generate ctags on save
-"
-let g:auto_ctags = 1
-let g:auto_ctags_warn_once = 1
-
-" LSP
-" Let ALE handle diagnostics
-let g:lsp_diagnostics_enabled=0 
-let g:lsp_fold_enabled=0
-let g:lsp_log_file=''
+  " LSP
+  " Let ALE handle diagnostics
+  let g:lsp_diagnostics_enabled=0 
+  let g:lsp_fold_enabled=0
+  let g:lsp_log_file=''
 endif
 
 let g:rainbow_active = 1
