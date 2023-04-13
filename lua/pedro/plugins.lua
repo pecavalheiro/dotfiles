@@ -60,11 +60,11 @@ return packer.startup(function(use)
   use "slim-template/vim-slim"          -- Slim syntax highlighting for vim.
   use "vim-scripts/matchit.zip"         -- Vim Matchit
   use "vim-scripts/ruby-matchit"        -- Ruby Matchit
-  use { "prettier/vim-prettier", run = "cd app && yarn install" } 
+  use { "prettier/vim-prettier", run = "cd app && yarn install" }
 
   -- NAVIGATION & FILE CONFIGURATION
-  use "antoinemadec/FixCursorHold.nvim" -- Required for Fern
-  use "lambdalisue/fern.vim"            -- Tree viewer
+  use { "lambdalisue/fern.vim",         -- Tree viewer
+        requires = "antoinemadec/FixCursorHold.nvim" }
   use "ludovicchabant/vim-gutentags"    -- Auto indexes ctags in the background
   use "tpope/vim-projectionist"         -- Configurable projections (like go to test file and back)
   use "vim-airline/vim-airline"         -- Lean & mean status/tabline

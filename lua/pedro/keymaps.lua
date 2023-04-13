@@ -84,6 +84,8 @@ keymap("n", "<Leader>tt", "<ESC>:tabnew<CR>", opts)           -- New tab
 keymap("n", "<leader>q", "<ESC>:q<CR>", opts)                 -- Quit
 keymap("n", "<CR>", ":nohlsearch<CR>", opts)                  -- Clear search highlight
 keymap("n", "<Leader>gb", "<ESC>:Git blame<CR>", opts)        -- Git blame
+-- Clear trailing spaces with F6
+keymap("n", "<F6>", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>", opts)
 
 ------------
 -- Visual --

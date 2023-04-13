@@ -53,7 +53,6 @@ local options = {
 
 vim.opt.diffopt:append "vertical"                       -- GitHub style diff
 vim.opt.statusline:append "%{fugitive#statusline()}"    -- Fugitive status in status line
-vim.opt.rtp:append "~/.fzf"    -- Fugitive status in status line
 
 for k, v in pairs(options) do
   vim.opt[k] = v
