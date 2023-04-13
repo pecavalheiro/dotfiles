@@ -87,6 +87,15 @@ return packer.startup(function(use)
   use "tpope/vim-surround"              -- Quotes substitution
   use "tpope/vim-unimpaired"            -- Pairs of handy bracket mappings
 
+  -- CMP
+  use "hrsh7th/nvim-cmp"                -- The completion plugin
+  use "hrsh7th/cmp-buffer"              -- Buffer completions
+  use "hrsh7th/cmp-path"                -- Path completions
+  use "hrsh7th/cmp-cmdline"             -- Cmdline completions
+  use "saadparwaiz1/cmp_luasnip"        -- Snippet completions
+  use "L3MON4D3/LuaSnip"                -- Snippet engine
+  use "rafamadriz/friendly-snippets"    -- A bunch of snippets to use
+
   -- GIT
   use "airblade/vim-gitgutter"          -- Shows a git diff
   use "mhinz/vim-signify"               -- Git diff in the gutter
