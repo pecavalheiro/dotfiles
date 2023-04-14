@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p $(eval echo ~$USER)/.config/nvim/lua/pedro
+mkdir -p $(eval echo ~$USER)/.config/nvim/lua/pedro/lsp/settings
 
 ln -s $(pwd)/.vimrc $(eval echo ~$USER)/
 ln -s $(pwd)/lua/pedro/options.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/
@@ -9,6 +9,12 @@ ln -s $(pwd)/lua/pedro/plugins.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/
 ln -s $(pwd)/lua/pedro/colorscheme.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/
 ln -s $(pwd)/lua/pedro/cmp.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/
 ln -s $(pwd)/lua/pedro/legacy.vim $(eval echo ~$USER)/.config/nvim/lua/pedro/
+ln -s $(pwd)/lua/pedro/lsp/handlers.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/lsp/
+ln -s $(pwd)/lua/pedro/lsp/init.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/lsp/
+ln -s $(pwd)/lua/pedro/lsp/mason.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/lsp/
+ln -s $(pwd)/lua/pedro/lsp/null-ls.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/lsp/
+ln -s $(pwd)/lua/pedro/lsp/settings/jsonls.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/lsp/settings/
+ln -s $(pwd)/lua/pedro/lsp/settings/lua_ls.lua $(eval echo ~$USER)/.config/nvim/lua/pedro/lsp/settings/
 ln -s $(pwd)/.gitconfig $(eval echo ~$USER)/
 ln -s $(pwd)/.tmux.conf $(eval echo ~$USER)/
 ln -s $(pwd)/.bash_aliases $(eval echo ~$USER)/

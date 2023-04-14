@@ -20,7 +20,6 @@ let g:ctrlp_show_hidden = 1
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='edge'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_section_a = airline#section#create(['mode']) " default: mode, crypt, paste, spell, iminsert
 let g:airline_section_b = airline#section#create(['hunks','']) " default hunks, branch
@@ -33,30 +32,11 @@ autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
 " GitGutter workaround for updating buffer
 autocmd BufWritePost * GitGutter
 
-let g:ale_linters = {
-\   'json': ['jq', 'jsonlint'],
-\}
-let g:ale_fixers = {
-\   'ruby': ['rubocop'],
-\   'javascript': ['prettier', 'eslint'],
-\   'typescript': ['prettier', 'eslint'],
-\   'json': ['jq'],
-\}
-
-" optional: Auto-correct on save.
-let g:ale_fix_on_save = 1
-
 if has('nvim')
   " Auto generate ctags on save
-  "
+
   let g:auto_ctags = 1
   let g:auto_ctags_warn_once = 1
-
-  " LSP
-  " Let ALE handle diagnostics
-  let g:lsp_diagnostics_enabled=0 
-  let g:lsp_fold_enabled=0
-  let g:lsp_log_file=''
 endif
 
 let g:rainbow_active = 1
