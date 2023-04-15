@@ -2,7 +2,6 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let g:edge_style = 'default'
 let g:edge_better_performance = 1
-"let g:ctrlp_match_window = 'min:4,max:72'
 filetype indent on                            " Load indent file for the current filetype
 filetype plugin on                            " Enable filetype-specific plugins
 highlight LineNr ctermfg=darkgrey
@@ -26,20 +25,14 @@ let g:airline_section_b = airline#section#create(['hunks','']) " default hunks, 
 let g:airline_section_x = airline#section#create(['tagbar']) " default tagbar, filetype, virtualenv
 let g:airline_section_y = airline#section#create([]) " default fileencoding, fileformat, 'bom', 'eol'
 
-" Highlights nginx.conf files
-autocmd BufEnter nginx.conf* if &filetype == "" | setlocal ft=nginx | endif
-
 " GitGutter workaround for updating buffer
 autocmd BufWritePost * GitGutter
 
 if has('nvim')
   " Auto generate ctags on save
-
   let g:auto_ctags = 1
   let g:auto_ctags_warn_once = 1
 endif
-
-let g:rainbow_active = 1
 
 let test#ruby#use_spring_binstub = 1
 let test#ruby#rspec#executable = 'rspec'
@@ -49,8 +42,6 @@ let g:endwise_no_mappings = v:true
 let g:gitgutter_preview_win_location = 'bo'
 let g:gitgutter_preview_win_floating = 0
 
-" Custom settings and mappings.
-"
 let g:fern#disable_default_mappings = 1
 
 function! FernInit() abort
@@ -85,6 +76,5 @@ augroup FernGroup
 augroup END
 
 " vim session autosave
-"
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'

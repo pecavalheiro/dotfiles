@@ -30,88 +30,72 @@ if not status_ok then
 end
 
 return packer.startup(function(use)
-
-  -- SYNTAX HIGHLIGHING
-  --use "jparise/vim-graphql"                 -- GraphQL file detection, syntax highlighting, and indentation.
-  use "aliou/sql-heredoc.vim"               -- Syntax highlighting for SQL heredocs
-  use "amadeus/vim-mjml"                    -- MJML syntax (email html)
-  use "chr4/nginx.vim"                      -- Nginx syntax highligh
-  use "ekalinin/Dockerfile.vim"             -- Dockerfile syntax
-  use "elixir-lang/vim-elixir"              -- Elixir support for vim
-  use "keith/rspec.vim"                     -- Rspec better highlight
-  use "kylef/apiblueprint.vim"              -- API Blueprint highlight
-  use "luochen1990/rainbow"                 -- Diff level of parentheses in diff color
-  use "mxw/vim-jsx"                         -- Syntax highlighting and indenting for JSX
-  use "othree/html5.vim"                    -- HTML5 syntax highlighting
-  use "pangloss/vim-javascript"             -- syntax highlighting and improved indentation
-  use "slim-template/vim-slim"              -- Slim syntax highlighting for vim.
-  use "vim-scripts/matchit.zip"             -- Vim Matchit
-  use "vim-scripts/ruby-matchit"            -- Ruby Matchit
-  use { "prettier/vim-prettier", run = "    cd app && yarn install" }
+  -- SYNTAX HIGHLIGHTING
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use "p00f/nvim-ts-rainbow"
 
   -- NAVIGATION & FILE CONFIGURATION
-  use { "lambdalisue/fern.vim",             -- Tree viewer
-        requires = "antoinemadec/FixCursorHold.nvim" }
-  use "ludovicchabant/vim-gutentags"        -- Auto indexes ctags in the background
-  use "tpope/vim-projectionist"             -- Configurable projections (like go to test file and back)
-  use "vim-airline/vim-airline"             -- Lean & mean status/tabline
-  use "vim-airline/vim-airline-themes"      -- Themes for Vim-Airline
+  use { "lambdalisue/fern.vim",        -- Tree viewer
+    requires = "antoinemadec/FixCursorHold.nvim" }
+  use "ludovicchabant/vim-gutentags"   -- Auto indexes ctags in the background
+  use "tpope/vim-projectionist"        -- Configurable projections (like go to test file and back)
+  use "vim-airline/vim-airline"        -- Lean & mean status/tabline
+  use "vim-airline/vim-airline-themes" -- Themes for Vim-Airline
 
   -- EDITING & MOVEMENTS
-  use "mattesgroeger/vim-bookmarks"         -- Vim Bookmarks upgrade
-  use "tpope/vim-repeat"                    -- Remap . to repeat plugin remaps
-  use "unblevable/quick-scope"              -- Highlights letters for <f>
+  use "mattesgroeger/vim-bookmarks" -- Vim Bookmarks upgrade
+  use "tpope/vim-repeat"            -- Remap . to repeat plugin remaps
+  use "unblevable/quick-scope"      -- Highlights letters for <f>
 
   -- SEARCH
-  use "google/vim-searchindex"              -- Adds info to search results (char /)
-  use { 'junegunn/fzf', run = function() vim.fn['fzf#install' ](0) end }
-  use "junegunn/fzf.vim"                    -- Fuzzy finder
+  use "google/vim-searchindex" -- Adds info to search results (char /)
+  use "junegunn/fzf.vim"       -- Fuzzy finder
+  use { 'junegunn/fzf', run = function() vim.fn['fzf#install'](0) end }
 
   -- CODING
-  use "AndrewRadev/splitjoin.vim"           -- Split/Join lines
-  use "janko-m/vim-test"                    -- A Vim wrapper for running tests on different granularities.
-  use "scrooloose/nerdcommenter"            -- NERD commenter
-  use "tpope/vim-speeddating"               -- Adds date support to C-A and C-X
-  use "tpope/vim-surround"                  -- Quotes substitution
-  use "tpope/vim-unimpaired"                -- Pairs of handy bracket mappings
+  use "AndrewRadev/splitjoin.vim" -- Split/Join lines
+  use "janko-m/vim-test"          -- A Vim wrapper for running tests on different granularities.
+  use "scrooloose/nerdcommenter"  -- NERD commenter
+  use "tpope/vim-speeddating"     -- Adds date support to C-A and C-X
+  use "tpope/vim-surround"        -- Quotes substitution
+  use "tpope/vim-unimpaired"      -- Pairs of handy bracket mappings
 
   -- CMP
-  use "hrsh7th/nvim-cmp"                    -- The completion plugin
-  use "hrsh7th/cmp-buffer"                  -- Buffer completions
-  use "hrsh7th/cmp-path"                    -- Path completions
-  use "hrsh7th/cmp-cmdline"                 -- Cmdline completions
-  use "saadparwaiz1/cmp_luasnip"            -- Snippet completions
-  use "L3MON4D3/LuaSnip"                    -- Snippet engine
-  use "rafamadriz/friendly-snippets"        -- A bunch of snippets to use
-  use "hrsh7th/cmp-nvim-lsp"                -- LSP engine
-  use "hrsh7th/cmp-nvim-lua"                -- LSP for Neovim Lua API
+  use "hrsh7th/nvim-cmp"             -- The completion plugin
+  use "hrsh7th/cmp-buffer"           -- Buffer completions
+  use "hrsh7th/cmp-path"             -- Path completions
+  use "hrsh7th/cmp-cmdline"          -- Cmdline completions
+  use "saadparwaiz1/cmp_luasnip"     -- Snippet completions
+  use "L3MON4D3/LuaSnip"             -- Snippet engine
+  use "rafamadriz/friendly-snippets" -- A bunch of snippets to use
+  use "hrsh7th/cmp-nvim-lsp"         -- LSP engine
+  use "hrsh7th/cmp-nvim-lua"         -- LSP for Neovim Lua API
 
   -- LSP
-  use "neovim/nvim-lspconfig"               -- Enable LSP
-  use "williamboman/mason.nvim"             -- Simple to use language server installer
-  use "williamboman/mason-lspconfig.nvim"   -- Bridges mason.nvim with the lspconfig plugin
-  use 'jose-elias-alvarez/null-ls.nvim'     -- LSP diagnostics and code actions
+  use "neovim/nvim-lspconfig"             -- Enable LSP
+  use "williamboman/mason.nvim"           -- Simple to use language server installer
+  use "williamboman/mason-lspconfig.nvim" -- Bridges mason.nvim with the lspconfig plugin
+  use 'jose-elias-alvarez/null-ls.nvim'   -- LSP diagnostics and code actions
 
   -- GIT
-  use "airblade/vim-gitgutter"              -- Shows a git diff
-  use "mhinz/vim-signify"                   -- Git diff in the gutter
-  use "tpope/vim-fugitive"                  -- Git wrapper
+  use "airblade/vim-gitgutter" -- Shows a git diff
+  use "mhinz/vim-signify"      -- Git diff in the gutter
+  use "tpope/vim-fugitive"     -- Git wrapper
 
-  -- RUBY/RAILS
-  use "ngmy/vim-rubocop"                    -- RuboCop
+  -- LINTERS/FORMATTERS
+  use "ngmy/vim-rubocop"         -- RuboCop
+  use { "prettier/vim-prettier", -- Prettier
+    run = "cd app && yarn install" }
 
   -- THEMES
   use "folke/tokyonight.nvim"
 
-  -- Go
-  use { "fatih/vim-go", run = ":GoUpdateBinaries" }
-
   -- SYSTEM
-  use "dhruvasagar/vim-prosession"
-  use "nvim-lua/plenary.nvim"   -- Useful lua functions used ny lots of plugins
-  use "nvim-lua/popup.nvim"     -- An implementation of the Popup API from vim in Neovim
-  use "tpope/vim-obsession"
-  use "wbthomason/packer.nvim"  -- Have packer manage itself
+  --use "dhruvasagar/vim-prosession"
+  --use "tpope/vim-obsession"
+  use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+  use "wbthomason/packer.nvim" -- Have packer manage itself
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -119,4 +103,3 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
-
