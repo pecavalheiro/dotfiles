@@ -5,4 +5,5 @@ require "pedro/colorscheme"
 require "pedro/cmp"
 require "pedro/lsp"
 require "pedro/treesitter"
+require "pedro/copilot"
 vim.cmd('source ~/.config/nvim/lua/pedro/legacy.vim')

@@ -68,8 +68,12 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip"     -- Snippet completions
   use "L3MON4D3/LuaSnip"             -- Snippet engine
   use "rafamadriz/friendly-snippets" -- A bunch of snippets to use
-  use "hrsh7th/cmp-nvim-lsp"         -- LSP engine
-  use "hrsh7th/cmp-nvim-lua"         -- LSP for Neovim Lua API
+  use "hrsh7th/cmp-nvim-lsp"         -- LSP source for CMP
+  use "hrsh7th/cmp-nvim-lua"         -- Lua API source for CMP
+  use { "zbirenbaum/copilot.lua",    -- Pure Lua replacement for Copilot
+    cmd = "Copilot", event = "InsertEnter", config = function() require("copilot").setup({}) end }
+  use { "zbirenbaum/copilot-cmp",    -- Copilot source for CMP
+    after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 
   -- LSP
   use "neovim/nvim-lspconfig"             -- Enable LSP
