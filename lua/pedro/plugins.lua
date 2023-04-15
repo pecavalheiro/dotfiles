@@ -95,8 +95,8 @@ return packer.startup(function(use)
   use "folke/tokyonight.nvim"
 
   -- SYSTEM
-  --use "dhruvasagar/vim-prosession"
-  --use "tpope/vim-obsession"
+  use "dhruvasagar/vim-prosession"
+  use "tpope/vim-obsession"
   use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
   use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
   use "wbthomason/packer.nvim" -- Have packer manage itself
