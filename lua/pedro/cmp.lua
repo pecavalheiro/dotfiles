@@ -19,6 +19,7 @@ end
 local kind_icons = {
   Text = "",
   Method = "m",
+  Copilot = "",
   Function = "",
   Constructor = "",
   Field = "",
@@ -131,4 +132,3 @@ cmp.setup {
     native_menu = false,
   },
 }
-

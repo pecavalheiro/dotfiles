@@ -98,7 +98,7 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "<a-j>", ":m .+1<cr>==", opts)
-keymap("v", "p", '"_dp', opts) -- Keep previous yank when replacing a visual selection
+keymap("v", "p", "P", opts) -- paste in visual mode without overwriting
 
 ------------------
 -- Visual Block --

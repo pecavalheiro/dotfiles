@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -14,7 +13,7 @@ M.setup = function()
   end
 
   local config = {
-    virtual_text = true,
+    virtual_text = false,
     signs = { active = signs, },
     update_in_insert = true,
     underline = true,
