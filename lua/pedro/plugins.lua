@@ -82,9 +82,8 @@ return packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'   -- LSP diagnostics and code actions
 
   -- GIT
-  use "airblade/vim-gitgutter" -- Shows a git diff
-  use "mhinz/vim-signify"      -- Git diff in the gutter
-  use "tpope/vim-fugitive"     -- Git wrapper
+  use "lewis6991/gitsigns.nvim" -- Git diff info in the sign column
+  use "tpope/vim-fugitive"      -- Git wrapper
 
   -- LINTERS/FORMATTERS
   use "ngmy/vim-rubocop"         -- RuboCop
@@ -100,6 +99,8 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
   use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
   use "wbthomason/packer.nvim" -- Have packer manage itself
+  use { "folke/trouble.nvim",  -- A pretty list of diagnostics
+    requires = "nvim-tree/nvim-web-devicons" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

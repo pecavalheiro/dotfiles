@@ -13,9 +13,6 @@ highlight ColorColumn ctermbg=88 guibg=#d70000
 let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
 let g:fzf_layout = { 'down': '20%' }
 
-" Show hidden files in CTRLP
-let g:ctrlp_show_hidden = 1
-
 " Airline bar settings
 let g:airline_powerline_fonts = 1 " Fancy fonts
 let g:airline#extensions#tabline#enabled = 1
@@ -25,9 +22,6 @@ let g:airline_section_b = airline#section#create(['hunks','']) " default hunks, 
 let g:airline_section_x = airline#section#create(['tagbar']) " default tagbar, filetype, virtualenv
 let g:airline_section_y = airline#section#create([]) " default fileencoding, fileformat, 'bom', 'eol'
 
-" GitGutter workaround for updating buffer
-autocmd BufWritePost * GitGutter
-
 if has('nvim')
   " Auto generate ctags on save
   let g:auto_ctags = 1
@@ -36,11 +30,6 @@ endif
 
 let test#ruby#use_spring_binstub = 1
 let test#ruby#rspec#executable = 'rspec'
-
-let g:endwise_no_mappings = v:true
-
-let g:gitgutter_preview_win_location = 'bo'
-let g:gitgutter_preview_win_floating = 0
 
 let g:fern#disable_default_mappings = 1
 

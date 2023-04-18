@@ -6,4 +6,6 @@ require "pedro/cmp"
 require "pedro/lsp"
 require "pedro/treesitter"
 require "pedro/copilot"
+require "pedro/gitsigns"
+require "pedro/trouble"
 vim.cmd('source ~/.config/nvim/lua/pedro/legacy.vim')

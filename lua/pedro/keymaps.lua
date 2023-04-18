@@ -53,6 +53,10 @@ keymap("n", "<C-n>", ":Fern . -drawer -width=35 -toggle<CR><C-w>=", opts) -- Ope
 keymap("n", "<Leader>f", ":Fern . -drawer -reveal=% -width=35<CR><C-w>=", opts) -- Open fern and reveal current file
 keymap("n", "<Leader>.", ":Fern %:h -drawer -width=35<CR><C-w>=", opts) -- Open fern with file path as root
 
+-- Trouble navigation
+keymap("n", "<Leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
+keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
