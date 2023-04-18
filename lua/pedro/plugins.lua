@@ -53,12 +53,12 @@ return packer.startup(function(use)
   use { 'junegunn/fzf', run = function() vim.fn['fzf#install'](0) end }
 
   -- CODING
-  use "AndrewRadev/splitjoin.vim" -- Split/Join lines
-  use "janko-m/vim-test"          -- A Vim wrapper for running tests on different granularities.
-  use "scrooloose/nerdcommenter"  -- NERD commenter
-  use "tpope/vim-speeddating"     -- Adds date support to C-A and C-X
-  use "tpope/vim-surround"        -- Quotes substitution
-  use "tpope/vim-unimpaired"      -- Pairs of handy bracket mappings
+  use "AndrewRadev/splitjoin.vim"     -- Split/Join lines
+  use "janko-m/vim-test"              -- A Vim wrapper for running tests on different granularities.
+  use "scrooloose/nerdcommenter"      -- NERD commenter
+  use "tpope/vim-speeddating"         -- Adds date support to C-A and C-X
+  use "tpope/vim-surround"            -- Quotes substitution
+  use "tpope/vim-unimpaired"          -- Pairs of handy bracket mappings
 
   -- CMP
   use "hrsh7th/nvim-cmp"             -- The completion plugin
