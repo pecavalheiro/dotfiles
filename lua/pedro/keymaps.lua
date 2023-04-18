@@ -86,6 +86,7 @@ keymap("n", "<Leader>ruaa", "<ESC>:RuboCop -A<CR>", opts)     -- Run Rubocop aut
 keymap("n", "<Leader>s", "<ESC>:w<CR>", opts)                 -- Save
 keymap("n", "<Leader>tt", "<ESC>:tabnew<CR>", opts)           -- New tab
 keymap("n", "<leader>q", "<ESC>:q<CR>", opts)                 -- Quit
+keymap("n", "<C-f>", "<ESC>:Format<CR>", opts)                -- Format
 keymap("n", "<CR>", ":nohlsearch<CR>", opts)                  -- Clear search highlight
 keymap("n", "<Leader>gb", "<ESC>:Git blame<CR>", opts)        -- Git blame
 -- Clear trailing spaces with F6
