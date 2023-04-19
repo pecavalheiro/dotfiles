@@ -52,12 +52,12 @@ local options = {
 }
 
 vim.opt.diffopt:append "vertical"                       -- GitHub style diff
-vim.opt.statusline:append "%{fugitive#statusline()}"    -- Fugitive status in status line
+vim.cmd [[highlight ColorColumn ctermbg=88 guibg=#d70000]] -- Red color column (80, 100)
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
--- how to run vim commands
+-- examples on how to run vim commands
 --vim.cmd "set whichwrap+=<,>,[,],h,l"
 --vim.cmd [[set iskeyword+=-]]

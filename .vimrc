@@ -1,14 +1,4 @@
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let g:edge_style = 'default'
-let g:edge_better_performance = 1
-filetype indent on                            " Load indent file for the current filetype
-filetype plugin on                            " Enable filetype-specific plugins
-highlight LineNr ctermfg=darkgrey
 set rtp+=/opt/homebrew/opt/fzf
-
-" Red column at position 80
-highlight ColorColumn ctermbg=88 guibg=#d70000
 
 let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
 let g:fzf_layout = { 'down': '20%' }
@@ -21,15 +11,6 @@ let g:airline_section_a = airline#section#create(['mode']) " default: mode, cryp
 let g:airline_section_b = airline#section#create(['hunks','']) " default hunks, branch
 let g:airline_section_x = airline#section#create(['tagbar']) " default tagbar, filetype, virtualenv
 let g:airline_section_y = airline#section#create([]) " default fileencoding, fileformat, 'bom', 'eol'
-
-if has('nvim')
-  " Auto generate ctags on save
-  let g:auto_ctags = 1
-  let g:auto_ctags_warn_once = 1
-endif
-
-let test#ruby#use_spring_binstub = 1
-let test#ruby#rspec#executable = 'rspec'
 
 let g:fern#disable_default_mappings = 1
 
