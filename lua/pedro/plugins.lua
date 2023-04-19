@@ -35,12 +35,11 @@ return packer.startup(function(use)
   use "p00f/nvim-ts-rainbow"
 
   -- NAVIGATION & FILE CONFIGURATION
-  use { "lambdalisue/fern.vim",        -- Tree viewer
+  use { "lambdalisue/fern.vim",      -- Tree viewer
     requires = "antoinemadec/FixCursorHold.nvim" }
-  use "ludovicchabant/vim-gutentags"   -- Auto indexes ctags in the background
-  use "tpope/vim-projectionist"        -- Configurable projections (like go to test file and back)
-  use "vim-airline/vim-airline"        -- Lean & mean status/tabline
-  use "vim-airline/vim-airline-themes" -- Themes for Vim-Airline
+  use "ludovicchabant/vim-gutentags" -- Auto indexes ctags in the background
+  use "tpope/vim-projectionist"      -- Configurable projections (like go to test file and back)
+  use "nvim-lualine/lualine.nvim"    -- Neovim statusline plugin written in lua
 
   -- EDITING & MOVEMENTS
   use "mattesgroeger/vim-bookmarks" -- Vim Bookmarks upgrade

@@ -3,15 +3,6 @@ set rtp+=/opt/homebrew/opt/fzf
 let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
 let g:fzf_layout = { 'down': '20%' }
 
-" Airline bar settings
-let g:airline_powerline_fonts = 1 " Fancy fonts
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_section_a = airline#section#create(['mode']) " default: mode, crypt, paste, spell, iminsert
-let g:airline_section_b = airline#section#create(['hunks','']) " default hunks, branch
-let g:airline_section_x = airline#section#create(['tagbar']) " default tagbar, filetype, virtualenv
-let g:airline_section_y = airline#section#create([]) " default fileencoding, fileformat, 'bom', 'eol'
-
 let g:fern#disable_default_mappings = 1
 
 function! FernInit() abort
