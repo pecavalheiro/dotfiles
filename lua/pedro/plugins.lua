@@ -85,9 +85,8 @@ return packer.startup(function(use)
   use "tpope/vim-fugitive"      -- Git wrapper
 
   -- LINTERS/FORMATTERS
-  use "ngmy/vim-rubocop"         -- RuboCop
-  use { "prettier/vim-prettier", -- Prettier
-    run = "cd app && yarn install" }
+  use "ngmy/vim-rubocop"           -- RuboCop
+  use 'mhartington/formatter.nvim' -- Formatter
 
   -- THEMES
   use "folke/tokyonight.nvim"
