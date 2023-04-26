@@ -11,7 +11,6 @@ vim.g.maplocalleader = ","
 
 -- Unmap some unwanted keys
 keymap("", "q:", "<Nop>", opts) -- Disable : cmds history window
-
 -- Disable standardwindow navigation (to get used with new keymaps)
 keymap("", "<C-w>h", "<Nop>", opts)
 keymap("", "<C-w>j", "<Nop>", opts)
@@ -88,7 +87,7 @@ keymap("n", "<Leader>n", ":TestNearest<CR>", opts)
 keymap("n", "<Leader>l", ":TestLast<CR>", opts)
 keymap("n", "<Leader>g", ":TestVisit<CR>", opts)
 keymap("n", "<Leader>ss", "<ESC>:w<CR>:TestFile<CR>", opts)   -- Save and run tests for current file
-keymap("n", "gt", ":A<CR> ", opts)                            -- Go to alternative file (test <> implementation)
+keymap("n", "<Leader>gt", ":A<CR> ", opts)                    -- Go to alternative file (test <> implementation)
 keymap("n", "<leader>bp", "<ESC>Obinding.pry<ESC>,s,l", opts) -- Insert binding.pry and run nearest test
 
 -- Misc
