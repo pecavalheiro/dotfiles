@@ -42,7 +42,8 @@ end
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>d", '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  -- toggle line diagnostic
+  --vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>d", '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
 end
 

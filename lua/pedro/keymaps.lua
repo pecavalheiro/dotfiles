@@ -56,6 +56,20 @@ keymap("n", "<Leader>.", ":Fern %:h -drawer -width=35<CR><C-w>=", opts)         
 keymap("n", "<Leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
 
+-- LSP toggle diagnostics virtual_text
+vim.g.diagnostics_visible = true
+function _G.toggle_diagnostics()
+  if vim.g.diagnostics_visible then
+    vim.g.diagnostics_visible = false
+    vim.diagnostic.config({ virtual_text = false })
+  else
+    vim.g.diagnostics_visible = true
+    vim.diagnostic.config({ virtual_text = true })
+  end
+end
+
+keymap('n', '<Leader>d', ':call v:lua.toggle_diagnostics()<CR>', opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
