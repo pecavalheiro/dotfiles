@@ -60,18 +60,18 @@ return packer.startup(function(use)
   use "tpope/vim-unimpaired"      -- Pairs of handy bracket mappings
 
   -- CMP
-  use "hrsh7th/nvim-cmp"             -- The completion plugin
-  use "hrsh7th/cmp-buffer"           -- Buffer completions
-  use "hrsh7th/cmp-path"             -- Path completions
-  use "hrsh7th/cmp-cmdline"          -- Cmdline completions
-  use "saadparwaiz1/cmp_luasnip"     -- Snippet completions
-  use "L3MON4D3/LuaSnip"             -- Snippet engine
-  use "rafamadriz/friendly-snippets" -- A bunch of snippets to use
-  use "hrsh7th/cmp-nvim-lsp"         -- LSP source for CMP
-  use "hrsh7th/cmp-nvim-lua"         -- Lua API source for CMP
-  use { "zbirenbaum/copilot.lua",    -- Pure Lua replacement for Copilot
+  use "hrsh7th/nvim-cmp"                                     -- The completion plugin
+  use { "L3MON4D3/LuaSnip" }             -- Snippet engine
+  use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }           -- Buffer completions
+  use { "hrsh7th/cmp-path", after = "nvim-cmp" }             -- Path completions
+  use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }          -- Cmdline completions
+  use { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }     -- Snippet completions
+  use { "rafamadriz/friendly-snippets", after = "nvim-cmp" } -- A bunch of snippets to use
+  use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }         -- LSP source for CMP
+  use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }         -- Lua API source for CMP
+  use { "zbirenbaum/copilot.lua", after = "nvim-cmp",        -- Pure Lua replacement for Copilot
     cmd = "Copilot", event = "InsertEnter", config = function() require("copilot").setup({}) end }
-  use { "zbirenbaum/copilot-cmp",    -- Copilot source for CMP
+  use { "zbirenbaum/copilot-cmp", -- Copilot source for CMP
     after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 
   -- LSP
@@ -90,10 +90,11 @@ return packer.startup(function(use)
 
   -- THEMES
   use "folke/tokyonight.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- SYSTEM
-  use "dhruvasagar/vim-prosession"
-  use "tpope/vim-obsession"
+  --use "dhruvasagar/vim-prosession"
+  --use "tpope/vim-obsession"
   use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
   use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
   use "wbthomason/packer.nvim" -- Have packer manage itself

@@ -12,7 +12,22 @@ formatter.setup {
   log_level = vim.log.levels.WARN,
   -- All formatter configurations are opt-in
   filetype = {
-    ruby = { require("formatter.filetypes.ruby").rubocop },
+    ruby = {
+      function()
+        return {
+          exe = "rubocop",
+          args = {
+            "-A",
+            "--stdin",
+            util.escape_path(util.get_current_buffer_file_path()),
+            "--format",
+            "files",
+            "--stderr",
+          },
+          stdin = true,
+        }
+      end
+    },
     typescriptreact = {
       function()
         return {

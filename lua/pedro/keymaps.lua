@@ -86,9 +86,9 @@ keymap("n", "<Leader>a", ":TestSuite<CR>", opts)
 keymap("n", "<Leader>n", ":TestNearest<CR>", opts)
 keymap("n", "<Leader>l", ":TestLast<CR>", opts)
 keymap("n", "<Leader>g", ":TestVisit<CR>", opts)
-keymap("n", "<Leader>ss", "<ESC>:w<CR>:TestFile<CR>", opts)   -- Save and run tests for current file
-keymap("n", "<Leader>gt", ":A<CR> ", opts)                    -- Go to alternative file (test <> implementation)
-keymap("n", "<leader>bp", "<ESC>Obinding.pry<ESC>,s,l", opts) -- Insert binding.pry and run nearest test
+keymap("n", "<Leader>ss", "<ESC>:w<CR>:TestFile<CR>", opts)                  -- Save and run tests for current file
+keymap("n", "<Leader>gt", ":A<CR> ", opts)                                   -- Go to alternative file (test <> implementation)
+keymap("n", "<leader>bp", "<ESC>Obinding.pry<ESC>:w<CR>:TestLast<CR>", opts) -- Insert binding.pry and run last test
 
 -- Misc
 keymap("n", "<C-p>", ":Files<CR>", opts)                  -- Fuzzy find files
