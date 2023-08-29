@@ -32,7 +32,10 @@ end
 return packer.startup(function(use)
   -- SYNTAX HIGHLIGHTING
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use "p00f/nvim-ts-rainbow"
+  --use "p00f/nvim-ts-rainbow"
+  use 'HiPhish/rainbow-delimiters.nvim'
+  use "slim-template/vim-slim"
+  use "lukas-reineke/indent-blankline.nvim" -- Indentation guides
 
   -- NAVIGATION & FILE CONFIGURATION
   use { "lambdalisue/fern.vim",      -- Tree viewer
@@ -61,7 +64,7 @@ return packer.startup(function(use)
 
   -- CMP
   use "hrsh7th/nvim-cmp"                                     -- The completion plugin
-  use { "L3MON4D3/LuaSnip" }             -- Snippet engine
+  use { "L3MON4D3/LuaSnip" }                                 -- Snippet engine
   use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }           -- Buffer completions
   use { "hrsh7th/cmp-path", after = "nvim-cmp" }             -- Path completions
   use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }          -- Cmdline completions
@@ -71,7 +74,7 @@ return packer.startup(function(use)
   use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }         -- Lua API source for CMP
   use { "zbirenbaum/copilot.lua", after = "nvim-cmp",        -- Pure Lua replacement for Copilot
     cmd = "Copilot", event = "InsertEnter", config = function() require("copilot").setup({}) end }
-  use { "zbirenbaum/copilot-cmp", -- Copilot source for CMP
+  use { "zbirenbaum/copilot-cmp",                            -- Copilot source for CMP
     after = { "copilot.lua" }, config = function() require("copilot_cmp").setup() end }
 
   -- LSP
@@ -86,6 +89,7 @@ return packer.startup(function(use)
 
   -- LINTERS/FORMATTERS
   use "ngmy/vim-rubocop"           -- RuboCop
+  --use "prettier/vim-prettier"      -- Prettier
   use 'mhartington/formatter.nvim' -- Formatter
 
   -- THEMES
@@ -100,6 +104,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use { "folke/trouble.nvim",  -- A pretty list of diagnostics
     requires = "nvim-tree/nvim-web-devicons" }
+  use "wincent/terminus"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
