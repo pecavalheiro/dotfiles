@@ -51,8 +51,10 @@ return packer.startup(function(use)
 
   -- SEARCH
   use "google/vim-searchindex" -- Adds info to search results (char /)
-  use "junegunn/fzf.vim"       -- Fuzzy finder
-  use { 'junegunn/fzf', run = function() vim.fn['fzf#install'](0) end }
+  use {
+    'junegunn/fzf.vim',
+    requires = { 'junegunn/fzf', run = ':call fzf#install()' }
+  }
 
   -- CODING
   use "AndrewRadev/splitjoin.vim" -- Split/Join lines

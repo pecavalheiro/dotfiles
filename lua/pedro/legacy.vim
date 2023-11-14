@@ -11,4 +11,7 @@ au BufNewFile,BufRead *.tsx setf typescriptreact
 " force craco to run jest if localyze project
 autocmd BufNewFile,BufRead ~/projects/localyze/*backend/client/* let test#javascript#jest#executable = 'yarn test --watchAll=false'
 
-source ~/.vimrc
+" junegunn/fzf.vim
+set rtp+=/opt/homebrew/opt/fzf
+let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
+let g:fzf_layout = { 'down': '30%' }
