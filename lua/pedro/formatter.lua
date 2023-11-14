@@ -15,7 +15,7 @@ formatter.setup {
     ruby = {
       function()
         return {
-          exe = "rubocop",
+          exe = "bundle exec rubocop",
           args = {
             "-A",
             "--stdin",
