@@ -46,14 +46,14 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Fern navigation
-keymap("n", "<C-n>", ":Fern . -drawer -width=35 -toggle<CR><C-w>=", opts)       -- Open fern
-keymap("n", "<Leader>f", ":Fern . -drawer -reveal=% -width=35<CR><C-w>=", opts) -- Open fern and reveal current file
-keymap("n", "<Leader>.", ":Fern %:h -drawer -width=35<CR><C-w>=", opts)         -- Open fern with file path as root
+-- nvim-tree navigation
+keymap("n", "<C-n>", ":NvimTreeToggle<CR>", opts)       -- Open nvim-tree
+keymap("n", "<Leader>f", ":NvimTreeFindFile<CR>", opts) -- Open nvim-tree and reveal current file
 
 -- Trouble navigation
 keymap("n", "<Leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
+keymap("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", opts)
 
 -- LSP toggle diagnostics virtual_text
 vim.g.diagnostics_visible = true
@@ -91,17 +91,17 @@ keymap("n", "<Leader>gt", ":A<CR> ", opts)                                   -- 
 keymap("n", "<leader>bp", "<ESC>Obinding.pry<ESC>:w<CR>:TestLast<CR>", opts) -- Insert binding.pry and run last test
 
 -- Misc
+keymap("n", "<C-f>", "<ESC>:Format<CR>", opts)            -- Format
+keymap("n", "<C-g>", ":Rg<Cr>", opts)                     -- Fuzzy find in file content
 keymap("n", "<C-p>", ":Files<CR>", opts)                  -- Fuzzy find files
-keymap("n", "<C-g>", ":Rg<Cr>", opts)                     -- Fuzzy find in tags
+keymap("n", "<CR>", ":nohlsearch<CR>", opts)              -- Clear search highlight
+keymap("n", "<Leader>gb", "<ESC>:Git blame<CR>", opts)    -- Git blame
 keymap("n", "<Leader>m", "@", opts)                       -- Quick access to macro
 keymap("n", "<Leader>rua", "<ESC>:RuboCop -a<CR>", opts)  -- Run Rubocop autocorrect
 keymap("n", "<Leader>ruaa", "<ESC>:RuboCop -A<CR>", opts) -- Run Rubocop autocorrect with -A
 keymap("n", "<Leader>s", "<ESC>:w<CR>", opts)             -- Save
-keymap("n", "<Leader>tt", "<ESC>:tabnew<CR>", opts)       -- New tab
+keymap("n", "<Leader>tt", "<ESC>:tabnew %<CR>", opts)       -- New tab
 keymap("n", "<leader>q", "<ESC>:q<CR>", opts)             -- Quit
-keymap("n", "<C-f>", "<ESC>:Format<CR>", opts)            -- Format
-keymap("n", "<CR>", ":nohlsearch<CR>", opts)              -- Clear search highlight
-keymap("n", "<Leader>gb", "<ESC>:Git blame<CR>", opts)    -- Git blame
 -- Clear trailing spaces with F6
 keymap("n", "<F6>", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>", opts)
 

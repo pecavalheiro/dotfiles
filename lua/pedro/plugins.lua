@@ -37,7 +37,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim" -- Indentation guides
 
   -- NAVIGATION & FILE CONFIGURATION
-  use { "lambdalisue/fern.vim",      -- Tree viewer
+  use { "nvim-tree/nvim-tree.lua",      -- Tree viewer
     requires = "antoinemadec/FixCursorHold.nvim" }
   use "tpope/vim-projectionist"      -- Configurable projections (like go to test file and back)
   use "nvim-lualine/lualine.nvim"    -- Neovim statusline plugin written in lua
