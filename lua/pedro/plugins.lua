@@ -32,7 +32,6 @@ end
 return packer.startup(function(use)
   -- SYNTAX HIGHLIGHTING
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  --use "p00f/nvim-ts-rainbow"
   use 'HiPhish/rainbow-delimiters.nvim'
   use "slim-template/vim-slim"
   use "lukas-reineke/indent-blankline.nvim" -- Indentation guides
@@ -40,7 +39,6 @@ return packer.startup(function(use)
   -- NAVIGATION & FILE CONFIGURATION
   use { "lambdalisue/fern.vim",      -- Tree viewer
     requires = "antoinemadec/FixCursorHold.nvim" }
-  use "ludovicchabant/vim-gutentags" -- Auto indexes ctags in the background
   use "tpope/vim-projectionist"      -- Configurable projections (like go to test file and back)
   use "nvim-lualine/lualine.nvim"    -- Neovim statusline plugin written in lua
 
