@@ -1,6 +1,8 @@
 [pager]
   diff = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
+  branch = false
+  log = false
 [alias]
   ; $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) is used to detect if master or main is being used in the repo
   a = add
@@ -13,10 +15,14 @@
   chm = "!f() { git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD); }; f"
   chko = checkout --ours
   chkt = checkout --theirs
+  ; delete all branches except main/master
+  dabf = "!f() { git branch | grep -v $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) | sed -e $'s/\\x1b\\[[0-9;]*m//g' | xargs git branch -D; }; f"
   cm = commit -m
   dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+  ; edit commit by SHA
   ec = "!f() { git rebase --interactive ''$1^''; }; f"
   flush = !git reset --hard && git clean -df
+  ; stash changes, create hotfix branch, apply changes, commit, push, checkout previous branch
   hf = "!f() { \
     git stash -u && \
     git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
@@ -32,6 +38,7 @@
     git checkout '@{-2}'; \
     }; f"
   l = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short --abbrev-commit -n 15
+  ; rebase current branch on origin/HEAD
   mm = "!f() { \
     git stash -u && \
     git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
@@ -81,5 +88,7 @@
   path = ~/.gitconfig.local
 [merge]
   tool = meld
+[init]
+  defaultBranch = main
 [mergetool]
   keepBackup = false
