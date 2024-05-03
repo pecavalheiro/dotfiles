@@ -17,7 +17,7 @@ formatter.setup {
         return {
           exe = "bundle exec rubocop",
           args = {
-            "-A",
+            "-a",
             "--stdin",
             util.escape_path(util.get_current_buffer_file_path()),
             "--format",
