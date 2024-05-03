@@ -54,6 +54,7 @@ keymap("n", "<Leader>f", ":NvimTreeFindFile<CR>", opts) -- Open nvim-tree and re
 keymap("n", "<Leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
 keymap("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", opts)
+keymap("n", 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 -- LSP toggle diagnostics virtual_text
 vim.g.diagnostics_visible = true
