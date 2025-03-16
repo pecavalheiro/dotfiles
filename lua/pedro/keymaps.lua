@@ -53,7 +53,8 @@ keymap("n", "<Leader>f", ":NvimTreeFindFile<CR>", opts) -- Open nvim-tree and re
 -- Trouble navigation
 keymap("n", "<Leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
-keymap("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", opts)
+--keymap("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", opts)
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 keymap("n", 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 -- LSP toggle diagnostics virtual_text

@@ -2,8 +2,9 @@
 local servers = {
 	"lua_ls",
 	"solargraph",
-	"tsserver",
+	"ts_ls",
 	"jsonls",
+	"elixirls",
 }
 
 require("mason").setup({
@@ -23,8 +24,9 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"html",
 		"lua_ls",
-		"tsserver",
+		"ts_ls",
 		"jsonls",
+		"elixirls",
 	},
 	--automatic_installation = true, -- any used server will be installed
 })

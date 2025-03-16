@@ -13,8 +13,11 @@ null_ls.setup({
   sources = {
     formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
     formatting.stylua,
-    formatting.rubocop,
-    diagnostics.reek
+    formatting.mix,
+    diagnostics.rubocop,
+    diagnostics.reek,
+    --diagnostics.credo,
+    -- diagnostics.brakeman,
     -- diagnostics.flake8
   },
 })
