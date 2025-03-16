@@ -56,7 +56,7 @@ return packer.startup(function(use)
 
   -- CODING
   use "AndrewRadev/splitjoin.vim" -- Split/Join lines
-  use "janko-m/vim-test"          -- A Vim wrapper for running tests on different granularities.
+  use "vim-test/vim-test"          -- A Vim wrapper for running tests on different granularities.
   use "scrooloose/nerdcommenter"  -- NERD commenter
   use "tpope/vim-speeddating"     -- Adds date support to C-A and C-X
   use "tpope/vim-surround"        -- Quotes substitution
@@ -81,7 +81,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig"             -- Enable LSP
   use "williamboman/mason.nvim"           -- Simple to use language server installer
   use "williamboman/mason-lspconfig.nvim" -- Bridges mason.nvim with the lspconfig plugin
-  use 'jose-elias-alvarez/null-ls.nvim'   -- LSP diagnostics and code actions
+  use 'nvimtools/none-ls.nvim'            -- LSP diagnostics and code actions (old null_ls)
 
   -- GIT
   use "lewis6991/gitsigns.nvim" -- Git diff info in the sign column
