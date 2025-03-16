@@ -1,12 +1,3 @@
-[pager]
-  show = diff-so-fancy | less --tabs=4 -RFX
-  diff = diff-so-fancy | less --tabs=4 -RFX
-  branch = false
-  log = false
-  algorithm = histogram
-  colorMoved = plain
-  mnemonicPrefix = true
-  renames = trueV
 [alias]
   ; $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) is used to detect if master or main is being used in the repo
   a = add
@@ -59,13 +50,12 @@
   up = !git fetch && git rebase
 [branch]
   sort = -committerdate
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
 [color]
   ui = always
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
   meta = yellow bold
   commit = green bold
@@ -78,10 +68,6 @@
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
 [color "status"]
   added = yellow
   changed = green
@@ -92,17 +78,26 @@
   prune = true
   pruneTags = true
   all = true
+[include]
+  path = ~/.gitconfig.local
+[init]
+  defaultBranch = main
+[merge]
+  tool = meld
+[mergetool]
+  keepBackup = false
+[pager]
+  show = diff-so-fancy | less --tabs=4 -RFX
+  diff = diff-so-fancy | less --tabs=4 -RFX
+  branch = false
+  log = false
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = trueV
 [push]
   default = tracking
   autoSetupRemote = true
   followTags = true
-[include]
-  path = ~/.gitconfig.local
-[merge]
-  tool = meld
-[init]
-  defaultBranch = main
-[mergetool]
-  keepBackup = false
 [tag]
   sort = version:refname
