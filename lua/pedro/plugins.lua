@@ -83,6 +83,28 @@ return packer.startup(function(use)
   use "williamboman/mason-lspconfig.nvim" -- Bridges mason.nvim with the lspconfig plugin
   use 'nvimtools/none-ls.nvim'            -- LSP diagnostics and code actions (old null_ls)
 
+  -- LANGUAGE SPECIFIC PLUGINS
+  use({ "elixir-tools/elixir-tools.nvim", tag = "stable", requires = { "nvim-lua/plenary.nvim" }})
+
+  -- AI
+  use {
+    'yetone/avante.nvim',
+    branch = 'main',
+    run = 'make',
+    config = function()
+      require('avante_lib').load()
+      require('avante').setup()
+    end,
+    requires = {
+      'stevearc/dressing.nvim',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'MeanderingProgrammer/render-markdown.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'HakonHarnes/img-clip.nvim',
+    }
+  }
+
   -- GIT
   use "lewis6991/gitsigns.nvim" -- Git diff info in the sign column
   use "tpope/vim-fugitive"      -- Git wrapper
