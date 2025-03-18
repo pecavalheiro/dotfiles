@@ -2,8 +2,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd("language en_US")
-
 require "pedro/keymaps"
 require "pedro/plugins"
 require "pedro/colorscheme"
