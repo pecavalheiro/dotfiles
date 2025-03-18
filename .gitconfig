@@ -72,8 +72,6 @@
   added = yellow
   changed = green
   untracked = cyan
-[column]
-  ui = auto
 [fetch]
   prune = true
   pruneTags = true
