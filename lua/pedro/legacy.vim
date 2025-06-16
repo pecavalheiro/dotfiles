@@ -11,7 +11,7 @@ au BufNewFile,BufRead *.tsx setf typescriptreact
 " force craco to run jest if localyze project
 autocmd BufNewFile,BufRead ~/projects/localyze/*backend/client/* let test#javascript#jest#executable = 'yarn test --watchAll=false'
 "let test#ruby#rspec#executable = 'spring rspec'
-let test#ruby#rspec#executable = 'bundle exec rspec'
+"let test#ruby#rspec#executable = 'bundle exec rspec'
 
 " junegunn/fzf.vim
 set rtp+=/opt/homebrew/opt/fzf

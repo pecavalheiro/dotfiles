@@ -44,3 +44,9 @@ configs.setup {
     -- termcolors = {} -- table of colour name strings
   }
 }
+
+vim.filetype.add({
+  extension = {
+    jbuilder = 'ruby',
+  },
+})
