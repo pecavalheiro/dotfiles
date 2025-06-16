@@ -36,16 +36,11 @@ return packer.startup(function(use)
   use "slim-template/vim-slim"
   use "lukas-reineke/indent-blankline.nvim" -- Indentation guides
 
-  -- NAVIGATION & FILE CONFIGURATION
-  use { "nvim-tree/nvim-tree.lua",      -- Tree viewer
-    requires = "antoinemadec/FixCursorHold.nvim" }
-  use "tpope/vim-projectionist"      -- Configurable projections (like go to test file and back)
-  use "nvim-lualine/lualine.nvim"    -- Neovim statusline plugin written in lua
-
   -- EDITING & MOVEMENTS
   use "mattesgroeger/vim-bookmarks" -- Vim Bookmarks upgrade
   use "tpope/vim-repeat"            -- Remap . to repeat plugin remaps
   use "unblevable/quick-scope"      -- Highlights letters for <f>
+  use "karb94/neoscroll.nvim"       -- Smooth scrolling
 
   -- SEARCH
   use "google/vim-searchindex" -- Adds info to search results (char /)
@@ -87,23 +82,12 @@ return packer.startup(function(use)
   use({ "elixir-tools/elixir-tools.nvim", tag = "stable", requires = { "nvim-lua/plenary.nvim" }})
 
   -- AI
-  use {
-    'yetone/avante.nvim',
-    branch = 'main',
-    run = 'make',
-    config = function()
-      require('avante_lib').load()
-      require('avante').setup()
-    end,
-    requires = {
-      'stevearc/dressing.nvim',
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-      'MeanderingProgrammer/render-markdown.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'HakonHarnes/img-clip.nvim',
-    }
-  }
+
+  -- NAVIGATION & FILE CONFIGURATION
+  use { "nvim-tree/nvim-tree.lua",   -- Tree viewer
+    requires = "antoinemadec/FixCursorHold.nvim" }
+  use "tpope/vim-projectionist"      -- Configurable projections (like go to test file and back)
+  use "nvim-lualine/lualine.nvim"    -- Neovim statusline plugin written in lua
 
   -- GIT
   use "lewis6991/gitsigns.nvim" -- Git diff info in the sign column
