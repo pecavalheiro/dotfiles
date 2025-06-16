@@ -13,7 +13,6 @@
   ; delete all branches except main/master
   dabf = "!f() { git branch | grep -v $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) | sed -e $'s/\\x1b\\[[0-9;]*m//g' | xargs git branch -D; }; f"
   cm = commit -m
-  dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
   ; edit commit by SHA
   ec = "!f() { git rebase --interactive ''$1^''; }; f"
   flush = !git reset --hard && git clean -df
@@ -84,15 +83,13 @@
   tool = meld
 [mergetool]
   keepBackup = false
-[pager]
-  show = diff-so-fancy | less --tabs=4 -RFX
-  diff = diff-so-fancy | less --tabs=4 -RFX
-  branch = false
-  log = false
-  algorithm = histogram
-  colorMoved = plain
-  mnemonicPrefix = true
-  renames = trueV
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
 [push]
   default = tracking
   autoSetupRemote = true
