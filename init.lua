@@ -20,7 +20,7 @@ require "pedro/options"
 vim.cmd('source ~/.config/nvim/lua/pedro/legacy.vim')
 
 -- sometimes copilot is not enabled when opening a new file
-vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
-  pattern = "*",
-  command = "Copilot enable",
-})
+--vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
+  --pattern = "*",
+  --command = "Copilot enable",
+--})
