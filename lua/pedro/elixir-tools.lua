@@ -20,6 +20,6 @@ elixir.setup({
     end,
   },
   projectionist = {
-    enable = true
+    enable = false
   }
 })
