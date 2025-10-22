@@ -11,6 +11,7 @@
   chko = checkout --ours
   chkt = checkout --theirs
   ; delete all branches except main/master
+  d = diff
   dabf = "!f() { git branch | grep -v $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) | sed -e $'s/\\x1b\\[[0-9;]*m//g' | xargs git branch -D; }; f"
   cm = commit -m
   ; edit commit by SHA
@@ -33,7 +34,7 @@
     }; f"
   l = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short --abbrev-commit -n 15
   ; rebase current branch on origin/HEAD
-  mm = "!f() { \
+  mms = "!f() { \
     git stash -u && \
     git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
     git up && \
@@ -41,9 +42,16 @@
     git rebase $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
     git stash pop; \
     }; f"
+  mm = "!f() { \
+    git checkout $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD) && \
+    git up && \
+    git checkout - && \
+    git rebase $(awk -F "/" '{print $NF}' .git/refs/remotes/origin/HEAD); \
+    }; f"
   pl = pull
   ps = push
   s = status -s
+  sn = "!f() { git status -s --porcelain | cut -c4-; }; f"
   st = status
   undo = reset --soft HEAD~1
   up = !git fetch && git rebase
